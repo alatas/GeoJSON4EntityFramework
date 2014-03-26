@@ -10,9 +10,7 @@
             If Polygons.Count = 0 Then
                 Return New Double() {}
             ElseIf Polygons.Count = 1 Then
-                Dim out(0)()() As Double
-                out(0) = Polygons(0).Coordinates
-                Return out
+                Return Polygons(0).Coordinates
             Else
                 Dim out(Polygons.Count - 1)()()() As Double
 

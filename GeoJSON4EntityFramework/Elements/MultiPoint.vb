@@ -9,9 +9,7 @@
             If Points.Count = 0 Then
                 Return New Double() {}
             ElseIf Points.Count = 1 Then
-                Dim out(0) As Double
-                out(0) = Points(0).Coordinates
-                Return out
+                Return Points(0).Coordinates
             Else
                 Dim out(Points.Count - 1)() As Double
 
