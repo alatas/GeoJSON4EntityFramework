@@ -8,8 +8,6 @@
         Get
             If Points.Count = 0 Then
                 Return New Double() {}
-            ElseIf Points.Count = 1 Then
-                Return Points(0).Coordinates
             Else
                 Dim out(Points.Count - 1)() As Double
 
