@@ -4,14 +4,13 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7B0F6694-A109-4F3F-84A0-9FA49193AF31}</ProjectGuid>
+    <ProjectGuid>{3622D159-0C66-4208-89FD-8DCD782B96F5}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>alatas.GeoJSON4EntityFramework</RootNamespace>
-    <AssemblyName>GeoJSON4EntityFramework</AssemblyName>
+    <RootNamespace>alatas.GeoJSON4EntityFramework5</RootNamespace>
+    <AssemblyName>GeoJSON4EntityFramework5</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -19,9 +18,8 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>GeoJSON4EntityFramework.xml</DocumentationFile>
+    <DocumentationFile>GeoJSON4EntityFramework5.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,9 +27,8 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>GeoJSON4EntityFramework.xml</DocumentationFile>
+    <DocumentationFile>GeoJSON4EntityFramework5.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -46,19 +43,14 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -77,23 +69,54 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\GeoJsonGeometryEF6.vb" />
-    <Compile Include="Elements\FeatureEF6.vb" />
-    <Compile Include="Elements\MultiPointEF6.vb" />
-    <Compile Include="Elements\MultiPolygonEF6.vb" />
-    <Compile Include="Elements\PointEF6.vb" />
-    <Compile Include="Elements\PolygonEF6.vb" />
-    <Compile Include="JsonNET\GeoJsonSerializer.vb" />
-    <Compile Include="Elements\Coordinate.vb" />
-    <Compile Include="Elements\CoordinateList.vb" />
-    <Compile Include="Elements\Feature.vb" />
-    <Compile Include="Elements\FeatureCollection.vb" />
-    <Compile Include="JsonNET\GenericListConverter.vb" />
-    <Compile Include="Base\GeoJsonElement.vb" />
-    <Compile Include="Base\GeoJsonGeometry.vb" />
-    <Compile Include="Base\IGeometry.vb" />
-    <Compile Include="Elements\MultiPoint.vb" />
-    <Compile Include="Elements\MultiPolygon.vb" />
+    <Compile Include="..\GeoJSON4EntityFramework\Base\GeoJsonElement.vb">
+      <Link>Base\GeoJsonElement.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Base\GeoJsonGeometry.vb">
+      <Link>Base\GeoJsonGeometry.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Base\IGeometry.vb">
+      <Link>Base\IGeometry.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\Coordinate.vb">
+      <Link>Elements\Coordinate.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\CoordinateList.vb">
+      <Link>Elements\CoordinateList.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\Feature.vb">
+      <Link>Elements\Feature.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\FeatureCollection.vb">
+      <Link>Elements\FeatureCollection.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\MultiPoint.vb">
+      <Link>Elements\MultiPoint.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\MultiPolygon.vb">
+      <Link>Elements\MultiPolygon.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\Point.vb">
+      <Link>Elements\Point.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\Polygon.vb">
+      <Link>Elements\Polygon.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\JsonNET\GenericListConverter.vb">
+      <Link>JsonNET\GenericListConverter.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\JsonNET\GeoJsonSerializer.vb">
+      <Link>JsonNET\GeoJsonSerializer.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\JsonNET\OrderedContractResolver.vb">
+      <Link>JsonNET\OrderedContractResolver.vb</Link>
+    </Compile>
+    <Compile Include="Base\GeoJsonGeometryEF5.vb" />
+    <Compile Include="Elements\FeatureEF5.vb" />
+    <Compile Include="Elements\MultiPointEF5.vb" />
+    <Compile Include="Elements\MultiPolygonEF5.vb" />
+    <Compile Include="Elements\PointEF5.vb" />
+    <Compile Include="Elements\PolygonEF5.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -109,9 +132,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="JsonNET\OrderedContractResolver.vb" />
-    <Compile Include="Elements\Point.vb" />
-    <Compile Include="Elements\Polygon.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -122,7 +142,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -134,9 +153,7 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="geojson.png" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
