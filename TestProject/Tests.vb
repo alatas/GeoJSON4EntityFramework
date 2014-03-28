@@ -38,6 +38,20 @@ Imports alatas.GeoJSON4EntityFramework
         Return fc
     End Function
 
+    Private Function GetTestFeatureCollectionEF5() As FeatureCollection
+        Dim fc As New FeatureCollection
+
+        countries.ForEach(Sub(c)
+                              Dim geom As Data.Spatial.DbGeometry = Data.Spatial.DbGeometry.FromText(c.Geometry)
+                              Dim f = Feature.FromDbGeometry(geom)
+                              f.ID = c.Code
+                              f.Properties.Add("Name", c.Name)
+                              f.Properties.Add("Area", geom.Area)
+                              fc.Features.Add(f)
+                          End Sub)
+        Return fc
+    End Function
+
     <TestMethod()> Public Sub TestMethod1()
         Dim fc = GetTestFeatureCollection()
         Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(fc, True)
@@ -46,8 +60,42 @@ Imports alatas.GeoJSON4EntityFramework
         Console.Out.WriteLine(json)
     End Sub
 
+    <TestMethod()> Public Sub TestMethodEF5_1()
+        Dim fc = GetTestFeatureCollectionEF5()
+        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(fc, True)
+        Assert.IsNotNull(json)
+        Console.Out.WriteLine("You can download spatial maps via http://www.naturalearthdata.com/, and after the process test your geojson via http://geojson.io or http://geojsonlint.com" & vbCrLf)
+        Console.Out.WriteLine(json)
+    End Sub
+
     <TestMethod()> Public Sub TestMethodOnline1()
         Dim fc = GetTestFeatureCollection()
+        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(fc, True)
+        Assert.IsNotNull(json)
+        Console.Out.WriteLine("You can download spatial maps via http://www.naturalearthdata.com/" & vbCrLf & vbCrLf)
+        Console.Out.WriteLine(json)
+
+        Dim buffer() As Byte = Text.Encoding.UTF8.GetBytes(json)
+        Dim webReq As Net.HttpWebRequest = Net.WebRequest.Create("http://geojsonlint.com/validate")
+
+        webReq.Method = "POST"
+        webReq.ContentLength = buffer.Length
+        webReq.ContentType = "application/x-www-form-urlencoded"
+
+        Dim reqStream = webReq.GetRequestStream()
+        reqStream.Write(buffer, 0, buffer.Length)
+        reqStream.Close()
+
+        Dim webRes = webReq.GetResponse
+        Dim resStream = webRes.GetResponseStream
+        Dim resReader As New IO.StreamReader(resStream)
+        Dim resObj = Newtonsoft.Json.JsonConvert.DeserializeObject(Of GeoJSONLintResult)(resReader.ReadToEnd)
+
+        Assert.AreEqual(resObj.status, "ok")
+    End Sub
+
+    <TestMethod()> Public Sub TestMethodOnlineEF5_1()
+        Dim fc = GetTestFeatureCollectionEF5()
         Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(fc, True)
         Assert.IsNotNull(json)
         Console.Out.WriteLine("You can download spatial maps via http://www.naturalearthdata.com/" & vbCrLf & vbCrLf)
