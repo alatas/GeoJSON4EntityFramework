@@ -4,4 +4,7 @@
     <JsonProperty(PropertyName:="coordinates")>
     Public MustOverride ReadOnly Property Coordinates() As Object
 
+    <JsonProperty(PropertyName:="bbox", Order:=5, NullValueHandling:=NullValueHandling.Ignore)>
+    Public Property BoundingBox As Double()
+
 End Class

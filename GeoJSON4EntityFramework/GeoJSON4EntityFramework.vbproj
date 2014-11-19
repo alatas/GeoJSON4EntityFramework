@@ -79,8 +79,12 @@
   <ItemGroup>
     <Compile Include="Base\GeoJsonGeometryEF6.vb" />
     <Compile Include="Elements\FeatureEF6.vb" />
+    <Compile Include="Elements\LineString.vb" />
+    <Compile Include="Elements\LineStringEF6.vb" />
+    <Compile Include="Elements\MultiLineStringEF6.vb" />
     <Compile Include="Elements\MultiPointEF6.vb" />
     <Compile Include="Elements\MultiPolygonEF6.vb" />
+    <Compile Include="Elements\MultiLineString.vb" />
     <Compile Include="Elements\PointEF6.vb" />
     <Compile Include="Elements\PolygonEF6.vb" />
     <Compile Include="JsonNET\GeoJsonSerializer.vb" />
@@ -138,6 +142,15 @@
     <Content Include="geojson.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    	xcopy $(TargetDir)$(TargetName).dll D:\Fuentes\_libs /Y
+	xcopy $(TargetDir)$(TargetName).pdb D:\Fuentes\_libs /Y
+
+    	xcopy $(TargetDir)$(TargetName).dll D:\Fuentes\Desarrollo\Raiz.GestionTerritorial\_lib /Y
+	xcopy $(TargetDir)$(TargetName).pdb D:\Fuentes\Desarrollo\Raiz.GestionTerritorial\_lib /Y
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
