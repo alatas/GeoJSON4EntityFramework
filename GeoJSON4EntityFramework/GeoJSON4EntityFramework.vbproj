@@ -77,16 +77,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\DbGeometryWrapperEF6.vb" />
     <Compile Include="Base\GeoJsonGeometryEF6.vb" />
     <Compile Include="Elements\FeatureEF6.vb" />
     <Compile Include="Elements\LineString.vb" />
-    <Compile Include="Elements\LineStringEF6.vb" />
-    <Compile Include="Elements\MultiLineStringEF6.vb" />
-    <Compile Include="Elements\MultiPointEF6.vb" />
-    <Compile Include="Elements\MultiPolygonEF6.vb" />
     <Compile Include="Elements\MultiLineString.vb" />
-    <Compile Include="Elements\PointEF6.vb" />
-    <Compile Include="Elements\PolygonEF6.vb" />
     <Compile Include="JsonNET\GeoJsonSerializer.vb" />
     <Compile Include="Elements\Coordinate.vb" />
     <Compile Include="Elements\CoordinateList.vb" />

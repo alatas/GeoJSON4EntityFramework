@@ -26,4 +26,14 @@
         End Get
     End Property
 
+    Public Overrides Sub CreateFromDbGeometry(inp As DbGeometryWrapper)
+        If inp.Geometry.SpatialTypeName <> MyBase.TypeName Then Throw New ArgumentException
+        Points.Clear()
+
+        For i As Integer = 1 To inp.Geometry.PointCount
+            Dim point = inp.Geometry.PointAt(i)
+            Points.AddNew(point.XCoordinate, point.YCoordinate)
+        Next
+    End Sub
+
 End Class

@@ -33,4 +33,27 @@
         End Get
     End Property
 
+    Public Overrides Sub CreateFromDbGeometry(inp As DbGeometryWrapper)
+        If inp.Geometry.SpatialTypeName <> MyBase.TypeName Then Throw New ArgumentException
+        PointsList.Clear()
+
+        Ring2Coordinates(New DbGeometryWrapper(inp.Geometry.ExteriorRing))
+        Dim numRings = inp.Geometry.InteriorRingCount
+        If (numRings = 0) Then Return
+        For i As Integer = 1 To numRings
+            Dim ring = inp.Geometry.InteriorRingAt(i)
+            Ring2Coordinates(New DbGeometryWrapper(ring))
+        Next
+
+    End Sub
+
+    Private Sub Ring2Coordinates(ring As DbGeometryWrapper)
+        Dim Points = New CoordinateList
+        For i As Integer = 1 To ring.Geometry.PointCount
+            Dim point = ring.Geometry.PointAt(i)
+            Points.AddNew(point.XCoordinate, point.YCoordinate)
+        Next
+        PointsList.Add(Points)
+    End Sub
+
 End Class
