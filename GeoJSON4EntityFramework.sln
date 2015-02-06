@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GeoJSON4EntityFramework", "GeoJSON4EntityFramework\GeoJSON4EntityFramework.vbproj", "{7B0F6694-A109-4F3F-84A0-9FA49193AF31}"
 EndProject
@@ -17,12 +17,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{7B0F6694-A109-4F3F-84A0-9FA49193AF31}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{7B0F6694-A109-4F3F-84A0-9FA49193AF31}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{7B0F6694-A109-4F3F-84A0-9FA49193AF31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B0F6694-A109-4F3F-84A0-9FA49193AF31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B0F6694-A109-4F3F-84A0-9FA49193AF31}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B0F6694-A109-4F3F-84A0-9FA49193AF31}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3AA1813C-601C-4FFF-8F7A-7070649CAF65}.Debug|Any CPU.ActiveCfg = Release|Any CPU
-		{3AA1813C-601C-4FFF-8F7A-7070649CAF65}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{3AA1813C-601C-4FFF-8F7A-7070649CAF65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AA1813C-601C-4FFF-8F7A-7070649CAF65}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AA1813C-601C-4FFF-8F7A-7070649CAF65}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AA1813C-601C-4FFF-8F7A-7070649CAF65}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3622D159-0C66-4208-89FD-8DCD782B96F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU

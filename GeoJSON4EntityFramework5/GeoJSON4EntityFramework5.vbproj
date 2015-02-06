@@ -102,6 +102,9 @@
     <Compile Include="..\GeoJSON4EntityFramework\Elements\Polygon.vb">
       <Link>Elements\Polygon.vb</Link>
     </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\JsonNET\CoordinateConverter.vb">
+      <Link>JsonNET\CoordinateConverter.vb</Link>
+    </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\JsonNET\GenericListConverter.vb">
       <Link>JsonNET\GenericListConverter.vb</Link>
     </Compile>

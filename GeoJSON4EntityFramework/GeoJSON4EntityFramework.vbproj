@@ -79,10 +79,12 @@
   <ItemGroup>
     <Compile Include="Base\GeoJsonGeometryEF6.vb" />
     <Compile Include="Elements\FeatureEF6.vb" />
+    <Compile Include="Elements\GeometryCollection.vb" />
     <Compile Include="Elements\MultiPointEF6.vb" />
     <Compile Include="Elements\MultiPolygonEF6.vb" />
     <Compile Include="Elements\PointEF6.vb" />
     <Compile Include="Elements\PolygonEF6.vb" />
+    <Compile Include="JsonNET\CoordinateConverter.vb" />
     <Compile Include="JsonNET\GeoJsonSerializer.vb" />
     <Compile Include="Elements\Coordinate.vb" />
     <Compile Include="Elements\CoordinateList.vb" />
@@ -123,6 +125,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Compile Include="Elements\GeometryCollectionEF6.vb" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
