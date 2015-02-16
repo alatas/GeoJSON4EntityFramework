@@ -19,4 +19,16 @@
             End If
         End Get
     End Property
+
+    Public Overrides Sub CreateFromDbGeometry(inp As DbGeometryWrapper)
+        If inp.Geometry.SpatialTypeName <> "MultiPolygon" Then Throw New ArgumentException
+        Polygons.Clear()
+
+        For i As Integer = 1 To inp.Geometry.ElementCount
+            Dim element = inp.Geometry.ElementAt(i)
+            If element.SpatialTypeName <> "Polygon" Then Throw New ArgumentException
+            Polygons.Add(Polygon.FromDbGeometry(New DbGeometryWrapper(element)))
+        Next
+    End Sub
+
 End Class

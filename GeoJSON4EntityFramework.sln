@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GeoJSON4EntityFramework", "GeoJSON4EntityFramework\GeoJSON4EntityFramework.vbproj", "{7B0F6694-A109-4F3F-84A0-9FA49193AF31}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GeoJSON4EntityFramework5", "GeoJSON4EntityFramework5\GeoJSON4EntityFramework5.vbproj", "{3622D159-0C66-4208-89FD-8DCD782B96F5}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "TestProjectEF5", "TestProjectEF5\TestProjectEF5.vbproj", "{F6B54320-5B5C-4ABF-A691-C3221641F353}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoJSON4EntityFrameworkCS", "GeoJSON4EntityFrameworkCS\GeoJSON4EntityFrameworkCS.csproj", "{B7B07940-C67B-40F2-A8E5-96F6EC9C100F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F6B54320-5B5C-4ABF-A691-C3221641F353}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6B54320-5B5C-4ABF-A691-C3221641F353}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6B54320-5B5C-4ABF-A691-C3221641F353}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7B07940-C67B-40F2-A8E5-96F6EC9C100F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7B07940-C67B-40F2-A8E5-96F6EC9C100F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7B07940-C67B-40F2-A8E5-96F6EC9C100F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7B07940-C67B-40F2-A8E5-96F6EC9C100F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

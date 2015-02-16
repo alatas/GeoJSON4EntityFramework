@@ -90,6 +90,12 @@
     <Compile Include="..\GeoJSON4EntityFramework\Elements\FeatureCollection.vb">
       <Link>Elements\FeatureCollection.vb</Link>
     </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\LineString.vb">
+      <Link>Elements\LineString.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\MultiLineString.vb">
+      <Link>Elements\MultiLineString.vb</Link>
+    </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\Elements\MultiPoint.vb">
       <Link>Elements\MultiPoint.vb</Link>
     </Compile>
@@ -111,12 +117,9 @@
     <Compile Include="..\GeoJSON4EntityFramework\JsonNET\OrderedContractResolver.vb">
       <Link>JsonNET\OrderedContractResolver.vb</Link>
     </Compile>
+    <Compile Include="Base\DbGeometryWrapperEF5.vb" />
     <Compile Include="Base\GeoJsonGeometryEF5.vb" />
     <Compile Include="Elements\FeatureEF5.vb" />
-    <Compile Include="Elements\MultiPointEF5.vb" />
-    <Compile Include="Elements\MultiPolygonEF5.vb" />
-    <Compile Include="Elements\PointEF5.vb" />
-    <Compile Include="Elements\PolygonEF5.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>

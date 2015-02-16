@@ -4,7 +4,7 @@
     Public Property ID As String
 
     <JsonProperty(PropertyName:="properties", Order:=3)>
-    Public Property Properties As New Dictionary(Of String, String)
+    Public Property Properties As New Dictionary(Of String, Object)
 
     <JsonProperty(PropertyName:="geometry", Order:=4)>
     <JsonConverter(GetType(GenericListConverter(Of IGeoJsonGeometry)))>

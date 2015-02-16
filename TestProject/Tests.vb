@@ -38,6 +38,24 @@ Imports alatas.GeoJSON4EntityFramework
         Return fc
     End Function
 
+    <TestMethod()>
+    Public Sub TestLineString()
+        Dim ls1 As String = "LINESTRING((45.554194 -122.686101, 45.433001 -122.762632))"
+        'Dim geom1 As Entity.Spatial.DbGeometry = Entity.Spatial.DbGeometry.FromText(ls1)
+        Dim ls2 As String = "LINESTRING (30 10, 10 30, 40 40)"
+        Dim geom2 As Entity.Spatial.DbGeometry = Entity.Spatial.DbGeometry.FromText(ls2)
+        Dim ls2a As LineString = LineString.FromDbGeometry(geom2)
+
+    End Sub
+
+    <TestMethod()>
+    Public Sub TestMultiLineString()
+        Dim wkt As String = "MULTILINESTRING ((10 10, 20 20, 10 40),(40 40, 30 30, 40 20, 30 10))"
+        Dim geom As Entity.Spatial.DbGeometry = Entity.Spatial.DbGeometry.FromText(wkt)
+        Dim item As MultiLineString = MultiLineString.FromDbGeometry(geom)
+
+    End Sub
+
     <TestMethod()> Public Sub TestMethod1()
         Dim fc = GetTestFeatureCollection()
         Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(fc, True)

@@ -18,4 +18,16 @@
             End If
         End Get
     End Property
+
+    Public Overloads Overrides Sub CreateFromDbGeometry(inp As DbGeometryWrapper)
+        If inp.Geometry.SpatialTypeName <> MyBase.TypeName Then Throw New ArgumentException
+        Points.Clear()
+
+        For i As Integer = 1 To inp.Geometry.ElementCount
+            Dim element = inp.Geometry.ElementAt(i)
+            If element.SpatialTypeName <> "Point" Then Throw New ArgumentException
+            Points.Add(Point.FromDbGeometry(New DbGeometryWrapper(element)))
+        Next
+    End Sub
+
 End Class
