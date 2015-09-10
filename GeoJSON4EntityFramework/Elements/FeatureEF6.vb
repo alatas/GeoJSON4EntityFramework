@@ -12,8 +12,8 @@
                 f.Geometry.Add(Point.FromDbGeometry(inp))
             Case "MultPoint"
                 f.Geometry.Add(MultiPoint.FromDbGeometry(inp))
-            Case Else
-                Throw New NotImplementedException
+            Case "GeometryCollection"
+                f.Geometry.Add(GeometryCollection.FromDbGeometry(inp))
         End Select
 
         Return f
