@@ -3,6 +3,7 @@
     Implements IGeoJsonGeometry
 
     <Newtonsoft.Json.JsonIgnore()>
+<<<<<<< HEAD
     Public Property PointsList As New List(Of CoordinateList)
 
     Public Overrides ReadOnly Property Coordinates()
@@ -34,6 +35,13 @@
             Catch ex As Exception
                 Return New Double() {}
             End Try
+=======
+    Public Property Rings As New List(Of CoordinateList)
+
+    Public Overrides ReadOnly Property Coordinates()
+        Get
+            Return Rings
+>>>>>>> additions_2
         End Get
     End Property
 
