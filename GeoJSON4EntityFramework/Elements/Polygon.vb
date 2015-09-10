@@ -20,9 +20,13 @@
                             Throw New Exception("There must be an array of two or more points")
                         Else
                             out(k) = New Double(Points3.Count - 1)() {}
-                            Parallel.For(0, Points3.Count, Sub(i)
-                                                               out(k)(i) = Points3(i).Coordinate
-                                                           End Sub)
+                            '--Warning BC4232--
+                            'Using the iteration variable In a lambda expression may have unexpected results.  
+                            'Instead, create a local variable within the Loop And assign it the value Of the iteration variable.
+                            For i As Integer = 0 To Points3.Count
+                                out(k)(i) = Points3(i).Coordinate
+                            Next
+                            '--
                         End If
                     Next
                     Return out
