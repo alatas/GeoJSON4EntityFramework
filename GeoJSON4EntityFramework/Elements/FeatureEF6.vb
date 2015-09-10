@@ -12,17 +12,14 @@
                 f.Geometry.Add(Point.FromDbGeometry(inp))
             Case "MultPoint"
                 f.Geometry.Add(MultiPoint.FromDbGeometry(inp))
-<<<<<<< HEAD
             Case "LineString"
                 f.Geometry.Add(LineString.FromDbGeometry(inp))
             Case "MultiLineString"
                 f.Geometry.Add(MultiLineString.FromDbGeometry(inp))
-            Case Else
-                Throw New NotImplementedException
-=======
             Case "GeometryCollection"
                 f.Geometry.Add(GeometryCollection.FromDbGeometry(inp))
->>>>>>> additions_2
+            Case Else
+                Throw New NotImplementedException
         End Select
 
         Return f

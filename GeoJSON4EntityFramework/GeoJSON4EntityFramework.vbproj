@@ -81,13 +81,10 @@
   <ItemGroup>
     <Compile Include="Base\GeoJsonGeometryEF6.vb" />
     <Compile Include="Elements\FeatureEF6.vb" />
-<<<<<<< HEAD
     <Compile Include="Elements\LineString.vb" />
     <Compile Include="Elements\LineStringEF6.vb" />
     <Compile Include="Elements\MultiLineStringEF6.vb" />
-=======
     <Compile Include="Elements\GeometryCollection.vb" />
->>>>>>> additions_2
     <Compile Include="Elements\MultiPointEF6.vb" />
     <Compile Include="Elements\MultiPolygonEF6.vb" />
     <Compile Include="Elements\MultiLineString.vb" />
