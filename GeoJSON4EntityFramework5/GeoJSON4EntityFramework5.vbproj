@@ -90,6 +90,9 @@
     <Compile Include="..\GeoJSON4EntityFramework\Elements\FeatureCollection.vb">
       <Link>Elements\FeatureCollection.vb</Link>
     </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\GeometryCollection.vb">
+      <Link>Elements\GeometryCollection.vb</Link>
+    </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\Elements\LineString.vb">
       <Link>Elements\LineString.vb</Link>
     </Compile>
@@ -122,6 +125,7 @@
     </Compile>
     <Compile Include="Base\GeoJsonGeometryEF5.vb" />
     <Compile Include="Elements\FeatureEF5.vb" />
+    <Compile Include="Elements\GeometryCollectionEF5.vb" />
     <Compile Include="Elements\LineStringEF5.vb" />
     <Compile Include="Elements\MultiLineStringEF5.vb" />
     <Compile Include="Elements\MultiPointEF5.vb" />

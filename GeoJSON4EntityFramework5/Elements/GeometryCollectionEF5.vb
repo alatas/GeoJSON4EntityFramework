@@ -1,5 +1,5 @@
 ﻿Partial Public Class GeometryCollection
-    Public Overrides Sub CreateFromDbGeometry(inp As Entity.Spatial.DbGeometry)
+    Public Overrides Sub CreateFromDbGeometry(inp As Spatial.DbGeometry)
         If inp.SpatialTypeName <> "GeometryCollection" Then Throw New ArgumentException
         Geometries.Clear()
 

@@ -7,8 +7,7 @@
 
     Public Overrides ReadOnly Property Coordinates As Object
         Get
-            'TODO: Complete
-            Throw New NotImplementedException
+            Return (From ls In LineStrings Let c = ls.Coordinates Select c).ToArray
         End Get
     End Property
 End Class
