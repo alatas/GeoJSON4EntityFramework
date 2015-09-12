@@ -1,3 +1,4 @@
-﻿Public Interface IGeoJsonGeometry
+﻿
+Public Interface IGeoJsonGeometry
 
 End Interface

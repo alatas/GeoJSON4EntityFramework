@@ -1,4 +1,5 @@
-﻿Public Class Coordinate
+﻿<JsonConverter(GetType(CoordinateConverter))>
+Public Class Coordinate
     Sub New()
         MyBase.New()
     End Sub
@@ -14,8 +15,10 @@
         End Get
     End Property
 
+    <JsonIgnore()>
     Public Property X As Double
 
+    <JsonIgnore()>
     Public Property Y As Double
 
 End Class

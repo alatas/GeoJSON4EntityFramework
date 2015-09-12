@@ -44,8 +44,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -90,6 +90,15 @@
     <Compile Include="..\GeoJSON4EntityFramework\Elements\FeatureCollection.vb">
       <Link>Elements\FeatureCollection.vb</Link>
     </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\GeometryCollection.vb">
+      <Link>Elements\GeometryCollection.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\LineString.vb">
+      <Link>Elements\LineString.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Elements\MultiLineString.vb">
+      <Link>Elements\MultiLineString.vb</Link>
+    </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\Elements\MultiPoint.vb">
       <Link>Elements\MultiPoint.vb</Link>
     </Compile>
@@ -102,6 +111,9 @@
     <Compile Include="..\GeoJSON4EntityFramework\Elements\Polygon.vb">
       <Link>Elements\Polygon.vb</Link>
     </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\JsonNET\CoordinateConverter.vb">
+      <Link>JsonNET\CoordinateConverter.vb</Link>
+    </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\JsonNET\GenericListConverter.vb">
       <Link>JsonNET\GenericListConverter.vb</Link>
     </Compile>
@@ -113,6 +125,9 @@
     </Compile>
     <Compile Include="Base\GeoJsonGeometryEF5.vb" />
     <Compile Include="Elements\FeatureEF5.vb" />
+    <Compile Include="Elements\GeometryCollectionEF5.vb" />
+    <Compile Include="Elements\LineStringEF5.vb" />
+    <Compile Include="Elements\MultiLineStringEF5.vb" />
     <Compile Include="Elements\MultiPointEF5.vb" />
     <Compile Include="Elements\MultiPolygonEF5.vb" />
     <Compile Include="Elements\PointEF5.vb" />

@@ -7,16 +7,11 @@
 
     Public Overrides ReadOnly Property Coordinates As Object
         Get
-            If Polygons.Count = 0 Then
-                Return New Double() {}
-            Else
-                Dim out(Polygons.Count - 1)()()() As Double
-
-                Parallel.For(0, Polygons.Count, Sub(i)
-                                                    out(i) = Polygons(i).Coordinates
-                                                End Sub)
-                Return out
-            End If
+            Dim result As New List(Of Object)()
+            For Each poly In Polygons
+                result.Add(poly.Coordinates)
+            Next
+            Return result
         End Get
     End Property
 End Class
