@@ -7,13 +7,13 @@
             Dim element = inp.ElementAt(i)
             Select Case element.SpatialTypeName
                 Case "MultiPolygon"
-                    Geometries.Add(MultiPolygon.FromDbGeometry(element))
+                    Geometries.Add(MultiPolygon.FromDbGeometry(element, WithBoundingBox))
                 Case "Polygon"
-                    Geometries.Add(Polygon.FromDbGeometry(element))
+                    Geometries.Add(Polygon.FromDbGeometry(element, WithBoundingBox))
                 Case "Point"
-                    Geometries.Add(Point.FromDbGeometry(element))
+                    Geometries.Add(Point.FromDbGeometry(element, WithBoundingBox))
                 Case "MultiPoint"
-                    Geometries.Add(MultiPoint.FromDbGeometry(element))
+                    Geometries.Add(MultiPoint.FromDbGeometry(element, WithBoundingBox))
                 Case Else
                     Throw New NotImplementedException
             End Select

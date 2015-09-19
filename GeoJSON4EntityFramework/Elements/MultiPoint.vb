@@ -2,6 +2,7 @@
     Inherits GeoJsonGeometry(Of MultiPoint)
     Implements IGeoJsonGeometry
 
+    <JsonIgnore>
     Public Property Points As New List(Of Point)
 
     Public Overrides ReadOnly Property Coordinates As Object

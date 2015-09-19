@@ -7,4 +7,6 @@
     <JsonProperty(PropertyName:="bbox", Order:=5, NullValueHandling:=NullValueHandling.Ignore)>
     Public Property BoundingBox As Double()
 
+    <JsonIgnore>
+    Public Property WithBoundingBox As Boolean = False
 End Class
