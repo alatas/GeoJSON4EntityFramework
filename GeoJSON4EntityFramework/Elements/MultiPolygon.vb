@@ -14,4 +14,10 @@
             Return result
         End Get
     End Property
+
+    Private ReadOnly Property IGeoJsonGeometry_TypeName As String Implements IGeoJsonGeometry.TypeName
+        Get
+            Return Me.TypeName
+        End Get
+    End Property
 End Class

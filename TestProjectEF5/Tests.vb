@@ -32,13 +32,25 @@ Public Class Tests
     End Sub
 
     Public Sub TestSpecificType(elementType As String)
-        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(GetFeatureCollection(elementType.ToUpperInvariant), True)
+        Dim fc = GetFeatureCollection(elementType.ToUpperInvariant)
+        For Each f In fc.Features
+            For Each g In f.Geometry
+                Assert.AreEqual(elementType.ToUpperInvariant(), g.TypeName.ToUpperInvariant())
+            Next
+        Next
+        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(fc, True)
         Assert.IsNotNull(json)
         WriteOutput(json)
     End Sub
 
     Public Sub TestSpecificTypeOnline(elementType As String)
-        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(GetFeatureCollection(elementType.ToUpperInvariant), False)
+        Dim fc = GetFeatureCollection(elementType.ToUpperInvariant)
+        For Each f In fc.Features
+            For Each g In f.Geometry
+                Assert.AreEqual(elementType.ToUpperInvariant(), g.TypeName.ToUpperInvariant())
+            Next
+        Next
+        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(fc, False)
         Assert.IsNotNull(json)
         WriteOutput(json)
         SendOutput(json)
