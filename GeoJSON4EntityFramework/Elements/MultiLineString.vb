@@ -1,4 +1,6 @@
-﻿Public Class MultiLineString
+﻿Imports alatas.GeoJSON4EntityFramework
+
+Public Class MultiLineString
     Inherits GeoJsonGeometry(Of MultiLineString)
     Implements IGeoJsonGeometry
 
@@ -16,4 +18,12 @@
             Return Me.TypeName
         End Get
     End Property
+
+    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+        Dim mls As New MultiLineString()
+        If Not Me.LineStrings Is Nothing Then
+            mls.LineStrings.AddRange(Me.LineStrings.Select(Function(ls) ls.Transform(xform)))
+        End If
+        Return mls
+    End Function
 End Class

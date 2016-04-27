@@ -1,4 +1,6 @@
-﻿Public Class Point
+﻿Imports alatas.GeoJSON4EntityFramework
+
+Public Class Point
     Inherits GeoJsonGeometry(Of Point)
     Implements IGeoJsonGeometry
 
@@ -15,4 +17,15 @@
             Return Me.TypeName
         End Get
     End Property
+
+    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+        If xform Is Nothing Then
+            Throw New ArgumentNullException(NameOf(xform))
+        End If
+        Dim pt = New Point()
+        If Not Me.Point Is Nothing Then
+            pt.Point = Me.Point.Transform(xform)
+        End If
+        Return pt
+    End Function
 End Class

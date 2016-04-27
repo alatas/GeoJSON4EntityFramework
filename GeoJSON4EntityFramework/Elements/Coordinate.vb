@@ -9,6 +9,15 @@ Public Class Coordinate
         Y = _y
     End Sub
 
+    Friend Function Transform(xform As CoordinateTransform) As Coordinate
+        Dim tx As Double
+        Dim ty As Double
+        If Not xform(Me.X, Me.Y, tx, ty) Then
+            Throw New TransformException("Failed to transform coordinate")
+        End If
+        Return New Coordinate(tx, ty)
+    End Function
+
     Public ReadOnly Property Coordinate As Double()
         Get
             Return New Double() {X, Y}

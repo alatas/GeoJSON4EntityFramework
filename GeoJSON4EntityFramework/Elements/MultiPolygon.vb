@@ -1,4 +1,6 @@
-﻿Public Class MultiPolygon
+﻿Imports alatas.GeoJSON4EntityFramework
+
+Public Class MultiPolygon
     Inherits GeoJsonGeometry(Of MultiPolygon)
     Implements IGeoJsonGeometry
 
@@ -20,4 +22,12 @@
             Return Me.TypeName
         End Get
     End Property
+
+    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+        Dim mpl As New MultiPolygon()
+        If Not Me.Polygons Is Nothing Then
+            mpl.Polygons.AddRange(Me.Polygons.Select(Function(poly) poly.Transform(xform)))
+        End If
+        Return mpl
+    End Function
 End Class

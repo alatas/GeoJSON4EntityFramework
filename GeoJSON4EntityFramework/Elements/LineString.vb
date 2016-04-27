@@ -32,4 +32,16 @@
         End Get
     End Property
 
+    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+        If xform Is Nothing Then
+            Throw New ArgumentNullException(NameOf(xform))
+        End If
+
+        Dim line As New LineString()
+        If Not Me.Points Is Nothing Then
+            line.Points = Me.Points.CloneList(xform)
+        End If
+        Return line
+    End Function
+
 End Class

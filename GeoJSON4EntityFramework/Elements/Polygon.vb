@@ -16,4 +16,18 @@
             Return Me.TypeName
         End Get
     End Property
+
+    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+        If xform Is Nothing Then
+            Throw New ArgumentNullException(NameOf(xform))
+        End If
+
+        Dim poly As New Polygon()
+
+        If Not Me.Rings Is Nothing Then
+            poly.Rings.AddRange(Me.Rings.Select(Function(ring) ring.CloneList(xform)))
+        End If
+
+        Return poly
+    End Function
 End Class

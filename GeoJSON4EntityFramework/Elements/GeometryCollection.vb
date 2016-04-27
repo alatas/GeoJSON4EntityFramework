@@ -15,4 +15,12 @@ Partial Public Class GeometryCollection
             Return Me.TypeName
         End Get
     End Property
+
+    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+        Dim gc As New GeometryCollection()
+        If Not Me.Geometries Is Nothing Then
+            gc.Geometries.AddRange(Me.Geometries.Select(Function(g) g.Transform(xform)))
+        End If
+        Return gc
+    End Function
 End Class

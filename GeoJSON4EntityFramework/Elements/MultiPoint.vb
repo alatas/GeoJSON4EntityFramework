@@ -1,4 +1,6 @@
-﻿Public Class MultiPoint
+﻿Imports alatas.GeoJSON4EntityFramework
+
+Public Class MultiPoint
     Inherits GeoJsonGeometry(Of MultiPoint)
     Implements IGeoJsonGeometry
 
@@ -25,4 +27,12 @@
             Return Me.TypeName
         End Get
     End Property
+
+    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+        Dim mpt As New MultiPoint()
+        If Not Me.Points Is Nothing Then
+            mpt.Points.AddRange(Me.Points.Select(Function(pt) pt.Transform(xform)))
+        End If
+        Return mpt
+    End Function
 End Class
