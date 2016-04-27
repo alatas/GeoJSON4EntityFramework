@@ -23,6 +23,12 @@ Public Class MultiPolygon
         End Get
     End Property
 
+    Private ReadOnly Property IGeoJsonGeometry_BoundingBox As Double() Implements IGeoJsonGeometry.BoundingBox
+        Get
+            Return Me.BoundingBox
+        End Get
+    End Property
+
     Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
         Dim mpl As New MultiPolygon()
         If Not Me.Polygons Is Nothing Then

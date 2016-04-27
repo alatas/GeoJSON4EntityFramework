@@ -18,6 +18,12 @@ Public Class Point
         End Get
     End Property
 
+    Private ReadOnly Property IGeoJsonGeometry_BoundingBox As Double() Implements IGeoJsonGeometry.BoundingBox
+        Get
+            Return Me.BoundingBox
+        End Get
+    End Property
+
     Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
         If xform Is Nothing Then
             Throw New ArgumentNullException(NameOf(xform))

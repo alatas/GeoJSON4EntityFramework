@@ -23,4 +23,13 @@ Public Interface IGeoJsonGeometry
     ''' <returns></returns>
     Function Transform(ByVal xform As CoordinateTransform) As IGeoJsonGeometry
 
+    ''' <summary>
+    ''' Returns the bounding box of this geometry instance. This is null if the geometry was created from a call to
+    ''' FromDbGeometry or FromDbGeography with withBoundingBox = false
+    ''' 
+    ''' If set, the bounding box follows the format: [minY, minX, maxY, maxX]
+    ''' </summary>
+    ''' <returns></returns>
+    ReadOnly Property BoundingBox As Double()
+
 End Interface
