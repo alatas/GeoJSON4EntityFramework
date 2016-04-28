@@ -47,6 +47,9 @@
         If Not Me.Points Is Nothing Then
             line.Points = Me.Points.CloneList(xform)
         End If
+        If Not Me.BoundingBox Is Nothing Then
+            line.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+        End If
         Return line
     End Function
 

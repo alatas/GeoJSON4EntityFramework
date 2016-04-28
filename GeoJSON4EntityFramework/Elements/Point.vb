@@ -32,6 +32,9 @@ Public Class Point
         If Not Me.Point Is Nothing Then
             pt.Point = Me.Point.Transform(xform)
         End If
+        If Not Me.BoundingBox Is Nothing Then
+            pt.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+        End If
         Return pt
     End Function
 End Class

@@ -39,6 +39,9 @@ Public Class MultiPoint
         If Not Me.Points Is Nothing Then
             mpt.Points.AddRange(Me.Points.Select(Function(pt) pt.Transform(xform)))
         End If
+        If Not Me.BoundingBox Is Nothing Then
+            mpt.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+        End If
         Return mpt
     End Function
 End Class

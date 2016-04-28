@@ -34,6 +34,9 @@ Public Class MultiPolygon
         If Not Me.Polygons Is Nothing Then
             mpl.Polygons.AddRange(Me.Polygons.Select(Function(poly) poly.Transform(xform)))
         End If
+        If Not Me.BoundingBox Is Nothing Then
+            mpl.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+        End If
         Return mpl
     End Function
 End Class

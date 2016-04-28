@@ -27,6 +27,9 @@ Partial Public Class GeometryCollection
         If Not Me.Geometries Is Nothing Then
             gc.Geometries.AddRange(Me.Geometries.Select(Function(g) g.Transform(xform)))
         End If
+        If Not Me.BoundingBox Is Nothing Then
+            gc.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+        End If
         Return gc
     End Function
 End Class

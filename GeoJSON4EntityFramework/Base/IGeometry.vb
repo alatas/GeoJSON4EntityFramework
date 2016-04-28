@@ -17,7 +17,8 @@ Public Interface IGeoJsonGeometry
     ReadOnly Property TypeName As String
 
     ''' <summary>
-    ''' Returns a transformed instance of the given geometry using the suppled coordinate transform function
+    ''' Returns a transformed instance of the given geometry using the suppled coordinate transform function. If it has
+    ''' a bounding box specified, it too will also be transformed
     ''' </summary>
     ''' <param name="xform">The coordinate transform function</param>
     ''' <returns></returns>

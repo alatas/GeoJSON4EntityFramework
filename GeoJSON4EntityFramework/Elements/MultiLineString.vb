@@ -30,6 +30,9 @@ Public Class MultiLineString
         If Not Me.LineStrings Is Nothing Then
             mls.LineStrings.AddRange(Me.LineStrings.Select(Function(ls) ls.Transform(xform)))
         End If
+        If Not Me.BoundingBox Is Nothing Then
+            mls.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+        End If
         Return mls
     End Function
 End Class

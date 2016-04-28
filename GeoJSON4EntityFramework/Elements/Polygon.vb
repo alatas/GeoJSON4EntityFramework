@@ -33,6 +33,9 @@
         If Not Me.Rings Is Nothing Then
             poly.Rings.AddRange(Me.Rings.Select(Function(ring) ring.CloneList(xform)))
         End If
+        If Not Me.BoundingBox Is Nothing Then
+            poly.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+        End If
 
         Return poly
     End Function
