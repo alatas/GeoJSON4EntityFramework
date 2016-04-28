@@ -4,6 +4,7 @@ Public Class Point
     Inherits GeoJsonGeometry(Of Point)
     Implements IGeoJsonGeometry
 
+    <JsonIgnore()>
     Public Property Point As New Coordinate(0, 0)
 
     Public Overrides ReadOnly Property Coordinates As Object
