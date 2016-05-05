@@ -4,22 +4,22 @@
         Dim f As New Feature
 
         Select Case inp.SpatialTypeName
-            Case "MultiPolygon"
+            Case GeometryType.MultiPolygon
                 f.Geometry.Add(MultiPolygon.FromDbGeometry(inp, withBoundingBox))
-            Case "Polygon"
+            Case GeometryType.Polygon
                 f.Geometry.Add(Polygon.FromDbGeometry(inp, withBoundingBox))
-            Case "Point"
+            Case GeometryType.Point
                 f.Geometry.Add(Point.FromDbGeometry(inp, withBoundingBox))
-            Case "MultiPoint"
+            Case GeometryType.MultiPoint
                 f.Geometry.Add(MultiPoint.FromDbGeometry(inp, withBoundingBox))
-            Case "LineString"
+            Case GeometryType.LineString
                 f.Geometry.Add(LineString.FromDbGeometry(inp, withBoundingBox))
-            Case "MultiLineString"
+            Case GeometryType.MultiLineString
                 f.Geometry.Add(MultiLineString.FromDbGeometry(inp, withBoundingBox))
-            Case "GeometryCollection"
+            Case GeometryType.GeometryCollection
                 f.Geometry.Add(GeometryCollection.FromDbGeometry(inp, withBoundingBox))
             Case Else
-                Throw New NotImplementedException
+                Throw New NotImplementedException(String.Format("Geometry type not handled: {0}", inp.SpatialTypeName))
         End Select
 
         Return f
@@ -31,22 +31,22 @@
         Dim inpgeom = Spatial.DbSpatialServices.Default.GeometryFromBinary(inp.AsBinary, inp.CoordinateSystemId)
 
         Select Case inpgeom.SpatialTypeName
-            Case "MultiPolygon"
+            Case GeometryType.MultiPolygon
                 f.Geometry.Add(MultiPolygon.FromDbGeometry(inpgeom, withBoundingBox))
-            Case "Polygon"
+            Case GeometryType.Polygon
                 f.Geometry.Add(Polygon.FromDbGeometry(inpgeom, withBoundingBox))
-            Case "Point"
+            Case GeometryType.Point
                 f.Geometry.Add(Point.FromDbGeometry(inpgeom, withBoundingBox))
-            Case "MultiPoint"
+            Case GeometryType.MultiPoint
                 f.Geometry.Add(MultiPoint.FromDbGeometry(inpgeom, withBoundingBox))
-            Case "LineString"
+            Case GeometryType.LineString
                 f.Geometry.Add(LineString.FromDbGeometry(inpgeom, withBoundingBox))
-            Case "MultiLineString"
+            Case GeometryType.MultiLineString
                 f.Geometry.Add(MultiLineString.FromDbGeometry(inpgeom, withBoundingBox))
-            Case "GeometryCollection"
+            Case GeometryType.GeometryCollection
                 f.Geometry.Add(GeometryCollection.FromDbGeometry(inpgeom, withBoundingBox))
             Case Else
-                Throw New NotImplementedException
+                Throw New NotImplementedException(String.Format("Geography type not handled: {0}", inp.SpatialTypeName))
         End Select
 
         Return f

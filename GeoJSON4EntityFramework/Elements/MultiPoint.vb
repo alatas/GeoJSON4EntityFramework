@@ -37,7 +37,7 @@ Public Class MultiPoint
     Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
         Dim mpt As New MultiPoint()
         If Not Me.Points Is Nothing Then
-            mpt.Points.AddRange(Me.Points.Select(Function(pt) pt.Transform(xform)))
+            mpt.Points.AddRange(Me.Points.Select(Function(pt) CType(pt.Transform(xform), Point)))
         End If
         If Not Me.BoundingBox Is Nothing Then
             mpt.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)

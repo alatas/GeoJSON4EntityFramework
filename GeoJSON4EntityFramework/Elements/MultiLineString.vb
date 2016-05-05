@@ -28,7 +28,7 @@ Public Class MultiLineString
     Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
         Dim mls As New MultiLineString()
         If Not Me.LineStrings Is Nothing Then
-            mls.LineStrings.AddRange(Me.LineStrings.Select(Function(ls) ls.Transform(xform)))
+            mls.LineStrings.AddRange(Me.LineStrings.Select(Function(ls) CType(ls.Transform(xform), LineString)))
         End If
         If Not Me.BoundingBox Is Nothing Then
             mls.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)

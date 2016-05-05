@@ -32,7 +32,7 @@ Public Class MultiPolygon
     Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
         Dim mpl As New MultiPolygon()
         If Not Me.Polygons Is Nothing Then
-            mpl.Polygons.AddRange(Me.Polygons.Select(Function(poly) poly.Transform(xform)))
+            mpl.Polygons.AddRange(Me.Polygons.Select(Function(poly) CType(poly.Transform(xform), Polygon)))
         End If
         If Not Me.BoundingBox Is Nothing Then
             mpl.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
