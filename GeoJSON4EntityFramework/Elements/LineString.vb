@@ -26,4 +26,31 @@
         End Get
     End Property
 
+    Private ReadOnly Property IGeoJsonGeometry_TypeName As String Implements IGeoJsonGeometry.TypeName
+        Get
+            Return Me.TypeName
+        End Get
+    End Property
+
+    Private ReadOnly Property IGeoJsonGeometry_BoundingBox As Double() Implements IGeoJsonGeometry.BoundingBox
+        Get
+            Return Me.BoundingBox
+        End Get
+    End Property
+
+    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+        If xform Is Nothing Then
+            Throw New ArgumentNullException(NameOf(xform))
+        End If
+
+        Dim line As New LineString()
+        If Not Me.Points Is Nothing Then
+            line.Points = Me.Points.CloneList(xform)
+        End If
+        If Not Me.BoundingBox Is Nothing Then
+            line.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+        End If
+        Return line
+    End Function
+
 End Class

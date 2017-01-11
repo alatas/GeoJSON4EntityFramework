@@ -75,8 +75,14 @@
     <Compile Include="..\GeoJSON4EntityFramework\Base\GeoJsonGeometry.vb">
       <Link>Base\GeoJsonGeometry.vb</Link>
     </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Base\GeometryType.vb">
+      <Link>Base\GeometryType.vb</Link>
+    </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\Base\IGeometry.vb">
       <Link>Base\IGeometry.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Base\TransformException.vb">
+      <Link>Base\TransformException.vb</Link>
     </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\Elements\Coordinate.vb">
       <Link>Elements\Coordinate.vb</Link>

@@ -80,6 +80,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\GeoJsonGeometryEF6.vb" />
+    <Compile Include="Base\GeometryType.vb" />
+    <Compile Include="Base\TransformException.vb" />
     <Compile Include="Elements\FeatureEF6.vb" />
     <Compile Include="Elements\LineString.vb" />
     <Compile Include="Elements\LineStringEF6.vb" />
