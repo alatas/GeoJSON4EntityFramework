@@ -1,8 +1,7 @@
 ﻿Public Class LineString
-    Inherits GeoJsonGeometry(Of LineString)
-    Implements IGeoJsonGeometry
+    Inherits GeoJsonGeometry
 
-    <Newtonsoft.Json.JsonIgnore()>
+    <JsonIgnore()>
     Public Property Points As New CoordinateList
 
     Public Overrides ReadOnly Property Coordinates()
@@ -26,29 +25,18 @@
         End Get
     End Property
 
-    Private ReadOnly Property IGeoJsonGeometry_TypeName As String Implements IGeoJsonGeometry.TypeName
-        Get
-            Return Me.TypeName
-        End Get
-    End Property
-
-    Private ReadOnly Property IGeoJsonGeometry_BoundingBox As Double() Implements IGeoJsonGeometry.BoundingBox
-        Get
-            Return Me.BoundingBox
-        End Get
-    End Property
-
-    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+    Public Overrides Function Transform(xform As CoordinateTransform) As GeoJsonGeometry
         If xform Is Nothing Then
             Throw New ArgumentNullException(NameOf(xform))
         End If
 
         Dim line As New LineString()
-        If Not Me.Points Is Nothing Then
-            line.Points = Me.Points.CloneList(xform)
+        If Not Points Is Nothing Then
+            line.Points = Points.CloneList(xform)
         End If
-        If Not Me.BoundingBox Is Nothing Then
-            line.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+
+        If Not BoundingBox Is Nothing Then
+            line.BoundingBox = TransformFunctions.TransformBoundingBox(BoundingBox, xform)
         End If
         Return line
     End Function

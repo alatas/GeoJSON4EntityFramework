@@ -78,12 +78,6 @@
     <Compile Include="..\GeoJSON4EntityFramework\Base\GeometryType.vb">
       <Link>Base\GeometryType.vb</Link>
     </Compile>
-    <Compile Include="..\GeoJSON4EntityFramework\Base\IGeometry.vb">
-      <Link>Base\IGeometry.vb</Link>
-    </Compile>
-    <Compile Include="..\GeoJSON4EntityFramework\Base\TransformException.vb">
-      <Link>Base\TransformException.vb</Link>
-    </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\Elements\Coordinate.vb">
       <Link>Elements\Coordinate.vb</Link>
     </Compile>
@@ -128,6 +122,12 @@
     </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\JsonNET\OrderedContractResolver.vb">
       <Link>JsonNET\OrderedContractResolver.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Transform\Transform.vb">
+      <Link>Transform\Transform.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Transform\TransformException.vb">
+      <Link>Transform\TransformException.vb</Link>
     </Compile>
     <Compile Include="Base\GeoJsonGeometryEF5.vb" />
     <Compile Include="Elements\FeatureEF5.vb" />

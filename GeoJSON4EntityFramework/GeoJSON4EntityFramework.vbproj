@@ -81,7 +81,7 @@
   <ItemGroup>
     <Compile Include="Base\GeoJsonGeometryEF6.vb" />
     <Compile Include="Base\GeometryType.vb" />
-    <Compile Include="Base\TransformException.vb" />
+    <Compile Include="Transform\TransformException.vb" />
     <Compile Include="Elements\FeatureEF6.vb" />
     <Compile Include="Elements\LineString.vb" />
     <Compile Include="Elements\LineStringEF6.vb" />
@@ -101,7 +101,6 @@
     <Compile Include="JsonNET\GenericListConverter.vb" />
     <Compile Include="Base\GeoJsonElement.vb" />
     <Compile Include="Base\GeoJsonGeometry.vb" />
-    <Compile Include="Base\IGeometry.vb" />
     <Compile Include="Elements\MultiPoint.vb" />
     <Compile Include="Elements\MultiPolygon.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -122,6 +121,7 @@
     <Compile Include="JsonNET\OrderedContractResolver.vb" />
     <Compile Include="Elements\Point.vb" />
     <Compile Include="Elements\Polygon.vb" />
+    <Compile Include="Transform\Transform.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -132,7 +132,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <Compile Include="Elements\GeometryCollectionEF6.vb" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

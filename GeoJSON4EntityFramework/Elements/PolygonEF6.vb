@@ -9,7 +9,7 @@
     End Function
 
     Public Overrides Sub CreateFromDbGeometry(inp As Entity.Spatial.DbGeometry)
-        If inp.SpatialTypeName <> MyBase.TypeName Then Throw New ArgumentException
+        If inp.SpatialTypeName <> TypeName Then Throw New ArgumentException
         Rings.Clear()
 
         ' Process exterior ring

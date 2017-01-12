@@ -1,8 +1,5 @@
-﻿Imports alatas.GeoJSON4EntityFramework
-
-Public Class MultiPoint
-    Inherits GeoJsonGeometry(Of MultiPoint)
-    Implements IGeoJsonGeometry
+﻿Public Class MultiPoint
+    Inherits GeoJsonGeometry
 
     <JsonIgnore>
     Public Property Points As New List(Of Point)
@@ -22,25 +19,18 @@ Public Class MultiPoint
         End Get
     End Property
 
-    Private ReadOnly Property IGeoJsonGeometry_TypeName As String Implements IGeoJsonGeometry.TypeName
-        Get
-            Return Me.TypeName
-        End Get
-    End Property
-
-    Private ReadOnly Property IGeoJsonGeometry_BoundingBox As Double() Implements IGeoJsonGeometry.BoundingBox
-        Get
-            Return Me.BoundingBox
-        End Get
-    End Property
-
-    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
-        Dim mpt As New MultiPoint()
-        If Not Me.Points Is Nothing Then
-            mpt.Points.AddRange(Me.Points.Select(Function(pt) CType(pt.Transform(xform), Point)))
+    Public Overrides Function Transform(xform As CoordinateTransform) As GeoJsonGeometry
+        If xform Is Nothing Then
+            Throw New ArgumentNullException(NameOf(xform))
         End If
-        If Not Me.BoundingBox Is Nothing Then
-            mpt.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+
+        Dim mpt As New MultiPoint()
+        If Not Points Is Nothing Then
+            mpt.Points.AddRange(Points.Select(Function(pt) CType(pt.Transform(xform), Point)))
+        End If
+
+        If Not BoundingBox Is Nothing Then
+            mpt.BoundingBox = TransformFunctions.TransformBoundingBox(BoundingBox, xform)
         End If
         Return mpt
     End Function

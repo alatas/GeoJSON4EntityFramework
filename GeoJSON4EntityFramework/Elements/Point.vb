@@ -1,8 +1,5 @@
-﻿Imports alatas.GeoJSON4EntityFramework
-
-Public Class Point
-    Inherits GeoJsonGeometry(Of Point)
-    Implements IGeoJsonGeometry
+﻿Public Class Point
+    Inherits GeoJsonGeometry
 
     <JsonIgnore()>
     Public Property Point As New Coordinate(0, 0)
@@ -13,28 +10,18 @@ Public Class Point
         End Get
     End Property
 
-    Private ReadOnly Property IGeoJsonGeometry_TypeName As String Implements IGeoJsonGeometry.TypeName
-        Get
-            Return Me.TypeName
-        End Get
-    End Property
-
-    Private ReadOnly Property IGeoJsonGeometry_BoundingBox As Double() Implements IGeoJsonGeometry.BoundingBox
-        Get
-            Return Me.BoundingBox
-        End Get
-    End Property
-
-    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
+    Public Overrides Function Transform(xform As CoordinateTransform) As GeoJsonGeometry
         If xform Is Nothing Then
             Throw New ArgumentNullException(NameOf(xform))
         End If
+
         Dim pt = New Point()
-        If Not Me.Point Is Nothing Then
-            pt.Point = Me.Point.Transform(xform)
+        If Not Point Is Nothing Then
+            pt.Point = TransformFunctions.TransformCoordinate(Point, xform)
         End If
-        If Not Me.BoundingBox Is Nothing Then
-            pt.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+
+        If Not BoundingBox Is Nothing Then
+            pt.BoundingBox = TransformFunctions.TransformBoundingBox(BoundingBox, xform)
         End If
         Return pt
     End Function

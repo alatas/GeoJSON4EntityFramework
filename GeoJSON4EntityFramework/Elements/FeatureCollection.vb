@@ -1,5 +1,5 @@
 ﻿Public Class FeatureCollection
-    Inherits GeoJsonElement(Of FeatureCollection)
+    Inherits GeoJsonElement
 
     <JsonProperty(PropertyName:="features")>
     Public Property Features As New List(Of Feature)

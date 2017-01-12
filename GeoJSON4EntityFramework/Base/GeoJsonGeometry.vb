@@ -1,5 +1,5 @@
-﻿Public MustInherit Class GeoJsonGeometry(Of T)
-    Inherits GeoJsonElement(Of T)
+﻿Public MustInherit Class GeoJsonGeometry
+    Inherits GeoJsonElement
 
     <JsonProperty(PropertyName:="coordinates")>
     Public MustOverride ReadOnly Property Coordinates() As Object
@@ -9,4 +9,7 @@
 
     <JsonIgnore>
     Public Property WithBoundingBox As Boolean = False
+
+    Public MustOverride Function Transform(xform As CoordinateTransform) As GeoJsonGeometry
+
 End Class

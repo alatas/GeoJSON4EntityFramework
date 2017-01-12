@@ -21,13 +21,13 @@ Public Class Tests
     End Function
 
     <TestMethod()> Public Sub TestAll()
-        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(GetFeatureCollection(withBBox:=True), True)
+        Dim json = GeoJsonSerializer.Serialize(GetFeatureCollection(withBBox:=True), True)
         Assert.IsNotNull(json)
         WriteOutput(json)
     End Sub
 
     <TestMethod()> Public Sub OnlineTestAll()
-        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(GetFeatureCollection(withBBox:=True), False)
+        Dim json = GeoJsonSerializer.Serialize(GetFeatureCollection(withBBox:=True), False)
         Assert.IsNotNull(json)
         WriteOutput(json)
         SendOutput(json)
@@ -40,7 +40,7 @@ Public Class Tests
                 Assert.AreEqual(elementType.ToUpperInvariant(), g.TypeName.ToUpperInvariant())
             Next
         Next
-        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(fc, True)
+        Dim json = GeoJsonSerializer.Serialize(fc, True)
         Assert.IsNotNull(json)
         WriteOutput(json)
     End Sub
@@ -52,7 +52,7 @@ Public Class Tests
                 Assert.AreEqual(elementType.ToUpperInvariant(), g.TypeName.ToUpperInvariant())
             Next
         Next
-        Dim json = GeoJsonSerializer.Serialize(Of FeatureCollection)(fc, False)
+        Dim json = GeoJsonSerializer.Serialize(fc, False)
         Assert.IsNotNull(json)
         WriteOutput(json)
         SendOutput(json)
@@ -118,7 +118,7 @@ Public Class Tests
 
     <TestMethod> Sub TestPointGeometryTransform()
         Dim geom = DbGeometry.FromText("POINT (1 1)", 4326)
-        Dim pt As IGeoJsonGeometry = Point.FromDbGeometry(geom)
+        Dim pt As GeoJsonGeometry = Point.FromDbGeometry(geom)
         Dim tx_pt = pt.Transform(AddressOf CoordDisplacer)
         Dim tx_pt2 As Point = CType(tx_pt, Point)
         Assert.AreEqual(Of Int32)(2, tx_pt2.Point.X)
@@ -127,7 +127,7 @@ Public Class Tests
 
     <TestMethod> Sub TestMultiPointGeometryTransform()
         Dim geom = DbGeometry.FromText("MULTIPOINT ((1 1), (2 2))", 4326)
-        Dim mpt As IGeoJsonGeometry = MultiPoint.FromDbGeometry(geom)
+        Dim mpt As GeoJsonGeometry = MultiPoint.FromDbGeometry(geom)
         Dim tx_mpt = mpt.Transform(AddressOf CoordDisplacer)
         Dim tx_mpt2 As MultiPoint = CType(tx_mpt, MultiPoint)
         Assert.AreEqual(Of Int32)(2, tx_mpt2.Points(0).Point.X)
@@ -138,7 +138,7 @@ Public Class Tests
 
     <TestMethod> Sub TestLineStringGeometryTransform()
         Dim geom = DbGeometry.FromText("LINESTRING (1 1, 2 2)", 4326)
-        Dim ls As IGeoJsonGeometry = LineString.FromDbGeometry(geom)
+        Dim ls As GeoJsonGeometry = LineString.FromDbGeometry(geom)
         Dim tx_ls = ls.Transform(AddressOf CoordDisplacer)
         Dim tx_ls2 As LineString = CType(tx_ls, LineString)
         Assert.AreEqual(Of Int32)(2, tx_ls2.Points(0).X)
@@ -149,7 +149,7 @@ Public Class Tests
 
     <TestMethod> Sub TestMultiLineStringGeometryTransform()
         Dim geom = DbGeometry.FromText("MULTILINESTRING ((1 1, 2 2), (3 3, 4 4))", 4326)
-        Dim mls As IGeoJsonGeometry = MultiLineString.FromDbGeometry(geom)
+        Dim mls As GeoJsonGeometry = MultiLineString.FromDbGeometry(geom)
         Dim tx_mls = mls.Transform(AddressOf CoordDisplacer)
         Dim tx_mls2 As MultiLineString = CType(tx_mls, MultiLineString)
         Assert.AreEqual(Of Int32)(2, tx_mls2.LineStrings(0).Points(0).X)
@@ -164,7 +164,7 @@ Public Class Tests
 
     <TestMethod> Sub TestPolygonGeometryTransform()
         Dim geom = DbGeometry.FromText("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))", 4326)
-        Dim ply As IGeoJsonGeometry = Polygon.FromDbGeometry(geom)
+        Dim ply As GeoJsonGeometry = Polygon.FromDbGeometry(geom)
         Dim tx_ply = ply.Transform(AddressOf CoordDisplacer)
         Dim tx_ply2 As Polygon = CType(tx_ply, Polygon)
         Assert.AreEqual(Of Int32)(31, tx_ply2.Rings(0)(0).X)
@@ -181,7 +181,7 @@ Public Class Tests
 
     <TestMethod> Sub TestMultiPolygonGeometryTransform()
         Dim geom = DbGeometry.FromText("MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5)))", 4326)
-        Dim ply As IGeoJsonGeometry = MultiPolygon.FromDbGeometry(geom)
+        Dim ply As GeoJsonGeometry = MultiPolygon.FromDbGeometry(geom)
         Dim tx_ply = ply.Transform(AddressOf CoordDisplacer)
         Dim tx_ply2 As MultiPolygon = CType(tx_ply, MultiPolygon)
         Assert.AreEqual(Of Int32)(31, tx_ply2.Polygons(0).Rings(0)(0).X)
@@ -213,7 +213,7 @@ Public Class Tests
                   "MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5))))"
 
         Dim geom = DbGeometry.FromText(wkt, 4326)
-        Dim gc As IGeoJsonGeometry = GeometryCollection.FromDbGeometry(geom)
+        Dim gc As GeoJsonGeometry = GeometryCollection.FromDbGeometry(geom)
         Dim tx_gc = gc.Transform(AddressOf CoordDisplacer)
         Dim tx_gc2 As GeometryCollection = CType(tx_gc, GeometryCollection)
 

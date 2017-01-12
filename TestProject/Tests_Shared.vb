@@ -5,7 +5,10 @@ Partial Class Tests
     <TestInitialize()>
     Sub Init()
         Console.Out.WriteLine("Test Init")
-        Console.Out.WriteLine("You may need to install SQLCLRTypes (x86/x64) for spatial data types / SQLSysClrTypes.msi http://www.microsoft.com/en-us/download/details.aspx?id=35580")
+        Console.Out.WriteLine("You may need to install SQLCLRTypes first for spatial data types ")
+        Console.Out.WriteLine("Please download SQLSysClrTypes.msi from https://www.microsoft.com/en-us/download/details.aspx?id=49999")
+        Console.Out.WriteLine("For x64 OS, you have to install both x86 and x64")
+
         Dim i As Integer = 1
         Dim testWKTFolder As New IO.DirectoryInfo("../../../TestWKTs/")
 
@@ -25,6 +28,8 @@ Partial Class Tests
                 Loop
             End Using
         Next
+
+        Console.Out.WriteLine($"Total {i} test feature added.")
     End Sub
 
     Public Property TestContext() As TestContext

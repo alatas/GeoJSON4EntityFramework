@@ -1,8 +1,6 @@
-﻿Imports alatas.GeoJSON4EntityFramework
-
+﻿
 Public Class MultiLineString
-    Inherits GeoJsonGeometry(Of MultiLineString)
-    Implements IGeoJsonGeometry
+    Inherits GeoJsonGeometry
 
     <JsonIgnore()>
     Public Property LineStrings As New List(Of LineString)
@@ -13,25 +11,18 @@ Public Class MultiLineString
         End Get
     End Property
 
-    Private ReadOnly Property IGeoJsonGeometry_TypeName As String Implements IGeoJsonGeometry.TypeName
-        Get
-            Return Me.TypeName
-        End Get
-    End Property
-
-    Private ReadOnly Property IGeoJsonGeometry_BoundingBox As Double() Implements IGeoJsonGeometry.BoundingBox
-        Get
-            Return Me.BoundingBox
-        End Get
-    End Property
-
-    Public Function Transform(xform As CoordinateTransform) As IGeoJsonGeometry Implements IGeoJsonGeometry.Transform
-        Dim mls As New MultiLineString()
-        If Not Me.LineStrings Is Nothing Then
-            mls.LineStrings.AddRange(Me.LineStrings.Select(Function(ls) CType(ls.Transform(xform), LineString)))
+    Public Overrides Function Transform(xform As CoordinateTransform) As GeoJsonGeometry
+        If xform Is Nothing Then
+            Throw New ArgumentNullException(NameOf(xform))
         End If
+
+        Dim mls As New MultiLineString()
+        If Not LineStrings Is Nothing Then
+            mls.LineStrings.AddRange(LineStrings.Select(Function(ls) CType(ls.Transform(xform), LineString)))
+        End If
+
         If Not Me.BoundingBox Is Nothing Then
-            mls.BoundingBox = Coordinate.TransformBoundingBox(Me.BoundingBox, xform)
+            mls.BoundingBox = TransformFunctions.TransformBoundingBox(BoundingBox, xform)
         End If
         Return mls
     End Function

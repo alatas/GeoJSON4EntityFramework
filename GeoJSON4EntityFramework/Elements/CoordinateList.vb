@@ -5,9 +5,9 @@
         MyBase.Add(New Coordinate(X, Y))
     End Sub
 
-    Friend Function CloneList(xform As CoordinateTransform) As CoordinateList
+    Function CloneList(xform As CoordinateTransform) As CoordinateList
         Dim cloned As New CoordinateList()
-        cloned.AddRange(Me.Select(Function(coord) coord.Transform(xform)))
+        cloned.AddRange([Select](Function(coord) TransformFunctions.TransformCoordinate(coord, xform)))
         Return cloned
     End Function
 
