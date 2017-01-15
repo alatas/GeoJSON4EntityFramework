@@ -1,4 +1,12 @@
-﻿Public Class Point
+﻿#If EF5 Then
+Imports System.Data.Spatial
+#End If
+
+#If EF6 Then
+Imports System.Data.Entity.Spatial
+#End If
+
+Public Class Point
     Inherits GeoJsonGeometry
 
     <JsonIgnore()>
@@ -25,4 +33,9 @@
         End If
         Return pt
     End Function
+
+    Public Overrides Sub CreateFromDbGeometry(inp As DbGeometry)
+        If inp.SpatialTypeName <> TypeName Then Throw New ArgumentException
+        Point = New Coordinate(inp.XCoordinate, inp.YCoordinate)
+    End Sub
 End Class

@@ -1,4 +1,11 @@
-﻿
+﻿#If EF5 Then
+Imports System.Data.Spatial
+#End If
+
+#If EF6 Then
+Imports System.Data.Entity.Spatial
+#End If
+
 Public Class MultiLineString
     Inherits GeoJsonGeometry
 
@@ -26,4 +33,15 @@ Public Class MultiLineString
         End If
         Return mls
     End Function
+
+    Public Overrides Sub CreateFromDbGeometry(inp As DbGeometry)
+        If inp.SpatialTypeName <> TypeName Then Throw New ArgumentException
+        LineStrings.Clear()
+
+        For i As Integer = 1 To inp.ElementCount
+            Dim element = inp.ElementAt(i)
+            If element.SpatialTypeName <> GeometryType.LineString Then Throw New ArgumentException
+            LineStrings.Add(FromDbGeometry(element))
+        Next
+    End Sub
 End Class

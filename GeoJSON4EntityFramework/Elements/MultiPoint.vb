@@ -1,4 +1,12 @@
-﻿Public Class MultiPoint
+﻿#If EF5 Then
+Imports System.Data.Spatial
+#End If
+
+#If EF6 Then
+Imports System.Data.Entity.Spatial
+#End If
+
+Public Class MultiPoint
     Inherits GeoJsonGeometry
 
     <JsonIgnore>
@@ -34,4 +42,15 @@
         End If
         Return mpt
     End Function
+
+    Public Overrides Sub CreateFromDbGeometry(inp As DbGeometry)
+        If inp.SpatialTypeName <> TypeName Then Throw New ArgumentException
+        Points.Clear()
+
+        For i As Integer = 1 To inp.ElementCount
+            Dim element = inp.ElementAt(i)
+            If element.SpatialTypeName <> GeometryType.Point Then Throw New ArgumentException
+            Points.Add(FromDbGeometry(element))
+        Next
+    End Sub
 End Class

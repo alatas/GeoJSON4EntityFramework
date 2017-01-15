@@ -1,4 +1,12 @@
-﻿Partial Public Class GeometryCollection
+﻿#If EF5 Then
+Imports System.Data.Spatial
+#End If
+
+#If EF6 Then
+Imports System.Data.Entity.Spatial
+#End If
+
+Public Class GeometryCollection
     Inherits GeoJsonGeometry
 
     <JsonProperty(PropertyName:="geometries")>
@@ -22,4 +30,14 @@
         End If
         Return gc
     End Function
+
+    Public Overrides Sub CreateFromDbGeometry(inp As DbGeometry)
+        If inp.SpatialTypeName <> TypeName Then Throw New ArgumentException
+        Geometries.Clear()
+
+        For i As Integer = 1 To inp.ElementCount
+            Dim element = inp.ElementAt(i)
+            Geometries.Add(FromDbGeometry(element, WithBoundingBox))
+        Next
+    End Sub
 End Class

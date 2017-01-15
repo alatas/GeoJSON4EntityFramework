@@ -1,4 +1,12 @@
-﻿Public Class LineString
+﻿#If EF5 Then
+Imports System.Data.Spatial
+#End If
+
+#If EF6 Then
+Imports System.Data.Entity.Spatial
+#End If
+
+Public Class LineString
     Inherits GeoJsonGeometry
 
     <JsonIgnore()>
@@ -41,4 +49,13 @@
         Return line
     End Function
 
+    Public Overrides Sub CreateFromDbGeometry(inp As DbGeometry)
+        If inp.SpatialTypeName <> TypeName Then Throw New ArgumentException
+        Points.Clear()
+
+        For i As Integer = 1 To inp.PointCount
+            Dim point = inp.PointAt(i)
+            Points.AddNew(point.XCoordinate, point.YCoordinate)
+        Next
+    End Sub
 End Class
