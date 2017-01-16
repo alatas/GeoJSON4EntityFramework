@@ -30,7 +30,7 @@ Module Module1
                 Dim outjson = Menu(selection - 1).Method.Invoke
 
                 If outjson IsNot Nothing Then
-                    Dim fileName As String = IO.Path.Combine(StartupPath.FullName, "\out" & Now.ToString("yyyyMMddHHmmss") & ".json")
+                    Dim fileName As String = IO.Path.Combine(StartupPath.FullName, "out" & Now.ToString("yyyyMMddHHmmss") & ".json")
 
                     IO.File.WriteAllText(fileName, outjson, Text.Encoding.UTF8)
                     Console.WriteLine("GeoJSON saved : " & fileName)
@@ -142,7 +142,7 @@ Module Module1
     End Function
 
     Private Function GetLocalDB() As String
-        Dim exeFileName As String = "SqlLocalD.exe"
+        Dim exeFileName As String = "SqlLocalDB.exe"
 
         If IO.File.Exists(exeFileName) Then
             Return IO.Path.GetFullPath(exeFileName)

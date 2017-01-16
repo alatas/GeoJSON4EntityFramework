@@ -7,8 +7,8 @@ Imports alatas.GeoJSON4EntityFramework5
 Imports alatas.GeoJSON4EntityFramework
 #End If
 
-
-Partial Public MustInherit Class TestsBase
+<TestClass()>
+Public Class TestsBase
     Public TestFeatures As New List(Of TestFeature)
 
 
@@ -31,7 +31,7 @@ Partial Public MustInherit Class TestsBase
                     If Not (buffer = "" Or sRead.EndOfStream) Then
                         geom &= buffer
                     Else
-                        TestFeatures.Add(New TestFeature("Feature" & i, geom & buffer))
+                        TestFeatures.Add(New TestFeature("Feature" & i, geom & buffer, wktFile.Name))
                         geom = ""
                         i += 1
                         If sRead.EndOfStream Then Exit Do
@@ -41,15 +41,12 @@ Partial Public MustInherit Class TestsBase
         Next
 
         Console.Out.WriteLine($"Total {i} test feature added.")
+        Dim groups = (From f In TestFeatures Group f By f.ElementType Into Count).ToList
+        For Each g In groups
+            Console.Out.WriteLine($"{g.ElementType}: {g.Count} feature(s)")
+        Next
         Console.Out.WriteLine("Test Init End")
     End Sub
-
-
-    Public MustOverride Sub TestSpecificType(elementType As String)
-
-    Public MustOverride Sub TestSpecificTypeOnline(elementType As String)
-
-    Public MustOverride Function GetFeatureCollection(Optional elementType As String = "", Optional withBBox As Boolean = False) As FeatureCollection
 
     Public Property TestContext() As TestContext
 
@@ -60,7 +57,7 @@ Partial Public MustInherit Class TestsBase
         Console.Out.WriteLine("Output saved in " & fileName)
     End Sub
 
-    Public Sub SendOutput(json As String)
+    Public Sub TestOutputOnline(json As String)
         Console.Out.WriteLine("sending output to geojsonlint.com")
 
         Dim buffer() As Byte = Text.Encoding.UTF8.GetBytes(json)

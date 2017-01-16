@@ -9,47 +9,65 @@ Imports System.Data.Entity.Spatial
 Imports alatas.GeoJSON4EntityFramework
 #End If
 
-Partial Public MustInherit Class TestsBase
-    <TestMethod()> Public Sub TestAll()
-        Dim json = GeoJsonSerializer.Serialize(GetFeatureCollection(withBBox:=True), True)
-        Assert.IsNotNull(json)
-        WriteOutput(json)
+Partial Public Class TestsBase
+
+    <TestMethod, TestCategory("Offline_File")> Sub TestRoads()
+        TestSpecificFile("roads.wkt")
     End Sub
 
+    <TestMethod, TestCategory("Offline_File")> Sub TestInnerPoints()
+        TestSpecificFile("inner_points.wkt")
+    End Sub
 
-    <TestMethod> Sub TestMultiPolygon()
+    <TestMethod, TestCategory("Offline_File")> Sub TestInnerRoads()
+        TestSpecificFile("inner_roads.wkt")
+    End Sub
+
+    <TestMethod, TestCategory("Offline_File")> Sub TestMausoleumArea()
+        TestSpecificFile("mausoleum_area.wkt")
+    End Sub
+
+    <TestMethod, TestCategory("Offline_File")> Sub TestPoints()
+        TestSpecificFile("points.wkt")
+    End Sub
+
+    <TestMethod, TestCategory("Offline_File")> Sub TestResidentialArea()
+        TestSpecificFile("residential_area.wkt")
+    End Sub
+
+    <TestMethod, TestCategory("Offline_Type")> Sub TestMultiPolygon()
         TestSpecificType(GeometryType.MultiPolygon)
     End Sub
 
-    <TestMethod> Sub TestPolygon()
+    <TestMethod, TestCategory("Offline_Type")> Sub TestPolygon()
         TestSpecificType(GeometryType.Polygon)
     End Sub
 
-    <TestMethod> Sub TestPoint()
+    <TestMethod, TestCategory("Offline_Type")> Sub TestPoint()
         TestSpecificType(GeometryType.Point)
     End Sub
 
-    <TestMethod> Sub TestMultiPoint()
+    <TestMethod, TestCategory("Offline_Type")> Sub TestMultiPoint()
         TestSpecificType(GeometryType.MultiPoint)
     End Sub
 
-    <TestMethod> Sub TestLineString()
+    <TestMethod, TestCategory("Offline_Type")> Sub TestLineString()
         TestSpecificType(GeometryType.LineString)
     End Sub
 
-    <TestMethod> Sub TestMultiLineString()
+    <TestMethod, TestCategory("Offline_Type")> Sub TestMultiLineString()
         TestSpecificType(GeometryType.MultiLineString)
     End Sub
 
-    <TestMethod> Sub TestGeometryCollection()
+    <TestMethod, TestCategory("Offline_Type")> Sub TestGeometryCollection()
         TestSpecificType(GeometryType.GeometryCollection)
     End Sub
 
-    <TestMethod> Sub TestGeometryCollection2()
-        Dim wkt = "GEOMETRYCOLLECTION(POINT (30 10), LINESTRING (30 10, 10 30, 40 40), " &
-                  "POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10)), MULTIPOINT ((10 40), (40 30), (20 20), (30 10)), " &
-                  "MULTILINESTRING ((10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10)), " &
-                  "MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5))))"
+    <TestMethod, TestCategory("Offline_Type")> Sub TestGeometryCollection2()
+        Dim wkt = "GEOMETRYCOLLECTION(POINT (30 10), LINESTRING (30 10, 10 30, 40 40), 
+                  POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10)), MULTIPOINT ((10 40), (40 30), (20 20), (30 10)), 
+                  MULTILINESTRING ((10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10)),
+                  MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5))))"
 
         Dim geom = DbGeometry.FromText(wkt, 4326)
         Dim gc As GeometryCollection = GeometryCollection.FromDbGeometry(geom)

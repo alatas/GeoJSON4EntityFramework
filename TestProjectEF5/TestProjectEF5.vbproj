@@ -97,6 +97,9 @@
     <Compile Include="..\TestProject\Tests-Base.vb">
       <Link>Tests-Base.vb</Link>
     </Compile>
+    <Compile Include="..\TestProject\Tests-Functions.vb">
+      <Link>Tests-Functions.vb</Link>
+    </Compile>
     <Compile Include="..\TestProject\Tests-Offline.vb">
       <Link>Tests-Offline.vb</Link>
     </Compile>
@@ -121,7 +124,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TestsEF5.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">

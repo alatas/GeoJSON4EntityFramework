@@ -9,7 +9,7 @@ Imports System.Data.Entity.Spatial
 Imports alatas.GeoJSON4EntityFramework
 #End If
 
-Partial Public MustInherit Class TestsBase
+Partial Public Class TestsBase
 
     ''' <summary>
     ''' A simple transformation function that displaces all coordinate values by +1
@@ -25,7 +25,7 @@ Partial Public MustInherit Class TestsBase
         Return True
     End Function
 
-    <TestMethod> Sub TestPointGeometryTransform()
+    <TestMethod, TestCategory("Transform")> Sub TestPointGeometryTransform()
         Dim geom = DbGeometry.FromText("POINT (1 1)", 4326)
         Dim pt As GeoJsonGeometry = Point.FromDbGeometry(geom)
         Dim tx_pt = pt.Transform(AddressOf CoordDisplacer)
@@ -34,7 +34,7 @@ Partial Public MustInherit Class TestsBase
         Assert.AreEqual(Of Int32)(2, tx_pt2.Point.Y)
     End Sub
 
-    <TestMethod> Sub TestMultiPointGeometryTransform()
+    <TestMethod, TestCategory("Transform")> Sub TestMultiPointGeometryTransform()
         Dim geom = DbGeometry.FromText("MULTIPOINT ((1 1), (2 2))", 4326)
         Dim mpt As GeoJsonGeometry = MultiPoint.FromDbGeometry(geom)
         Dim tx_mpt = mpt.Transform(AddressOf CoordDisplacer)
@@ -45,7 +45,7 @@ Partial Public MustInherit Class TestsBase
         Assert.AreEqual(Of Int32)(3, tx_mpt2.Points(1).Point.Y)
     End Sub
 
-    <TestMethod> Sub TestLineStringGeometryTransform()
+    <TestMethod, TestCategory("Transform")> Sub TestLineStringGeometryTransform()
         Dim geom = DbGeometry.FromText("LINESTRING (1 1, 2 2)", 4326)
         Dim ls As GeoJsonGeometry = LineString.FromDbGeometry(geom)
         Dim tx_ls = ls.Transform(AddressOf CoordDisplacer)
@@ -56,7 +56,7 @@ Partial Public MustInherit Class TestsBase
         Assert.AreEqual(Of Int32)(3, tx_ls2.Points(1).Y)
     End Sub
 
-    <TestMethod> Sub TestMultiLineStringGeometryTransform()
+    <TestMethod, TestCategory("Transform")> Sub TestMultiLineStringGeometryTransform()
         Dim geom = DbGeometry.FromText("MULTILINESTRING ((1 1, 2 2), (3 3, 4 4))", 4326)
         Dim mls As GeoJsonGeometry = MultiLineString.FromDbGeometry(geom)
         Dim tx_mls = mls.Transform(AddressOf CoordDisplacer)
@@ -71,7 +71,7 @@ Partial Public MustInherit Class TestsBase
         Assert.AreEqual(Of Int32)(5, tx_mls2.LineStrings(1).Points(1).Y)
     End Sub
 
-    <TestMethod> Sub TestPolygonGeometryTransform()
+    <TestMethod, TestCategory("Transform")> Sub TestPolygonGeometryTransform()
         Dim geom = DbGeometry.FromText("POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10))", 4326)
         Dim ply As GeoJsonGeometry = Polygon.FromDbGeometry(geom)
         Dim tx_ply = ply.Transform(AddressOf CoordDisplacer)
@@ -88,7 +88,7 @@ Partial Public MustInherit Class TestsBase
         Assert.AreEqual(Of Int32)(11, tx_ply2.Rings(0)(4).Y)
     End Sub
 
-    <TestMethod> Sub TestMultiPolygonGeometryTransform()
+    <TestMethod, TestCategory("Transform")> Sub TestMultiPolygonGeometryTransform()
         Dim geom = DbGeometry.FromText("MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5)))", 4326)
         Dim ply As GeoJsonGeometry = MultiPolygon.FromDbGeometry(geom)
         Dim tx_ply = ply.Transform(AddressOf CoordDisplacer)
@@ -115,11 +115,11 @@ Partial Public MustInherit Class TestsBase
         Assert.AreEqual(Of Int32)(6, tx_ply2.Polygons(1).Rings(0)(4).Y)
     End Sub
 
-    <TestMethod> Sub TestGeometryCollectionTransform()
-        Dim wkt = "GEOMETRYCOLLECTION(POINT (30 10), LINESTRING (30 10, 10 30, 40 40), " &
-                  "POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10)), MULTIPOINT ((10 40), (40 30), (20 20), (30 10)), " &
-                  "MULTILINESTRING ((10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10)), " &
-                  "MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5))))"
+    <TestMethod, TestCategory("Transform")> Sub TestGeometryCollectionTransform()
+        Dim wkt = "GEOMETRYCOLLECTION(POINT (30 10), LINESTRING (30 10, 10 30, 40 40), 
+                  POLYGON ((30 10, 40 40, 20 40, 10 20, 30 10)), MULTIPOINT ((10 40), (40 30), (20 20), (30 10)),
+                  MULTILINESTRING ((10 10, 20 20, 10 40), (40 40, 30 30, 40 20, 30 10)), 
+                  MULTIPOLYGON (((30 20, 45 40, 10 40, 30 20)), ((15 5, 40 10, 10 20, 5 10, 15 5))))"
 
         Dim geom = DbGeometry.FromText(wkt, 4326)
         Dim gc As GeoJsonGeometry = GeometryCollection.FromDbGeometry(geom)

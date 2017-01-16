@@ -106,7 +106,7 @@
     <Compile Include="Tests-Transform.vb" />
     <Compile Include="Tests-Offline.vb" />
     <Compile Include="Tests-Online.vb" />
-    <Compile Include="TestsEF6.vb" />
+    <Compile Include="Tests-Functions.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
