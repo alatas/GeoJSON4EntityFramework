@@ -25,6 +25,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>TestProjectEF5.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineConstants>EF5</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -34,6 +35,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>TestProjectEF5.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineConstants>EF5</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -92,8 +94,20 @@
     <Compile Include="..\TestProject\TestFeature.vb">
       <Link>TestFeature.vb</Link>
     </Compile>
-    <Compile Include="..\TestProject\Tests_Shared.vb">
-      <Link>Tests_Shared.vb</Link>
+    <Compile Include="..\TestProject\Tests-Base.vb">
+      <Link>Tests-Base.vb</Link>
+    </Compile>
+    <Compile Include="..\TestProject\Tests-Functions.vb">
+      <Link>Tests-Functions.vb</Link>
+    </Compile>
+    <Compile Include="..\TestProject\Tests-Offline.vb">
+      <Link>Tests-Offline.vb</Link>
+    </Compile>
+    <Compile Include="..\TestProject\Tests-Online.vb">
+      <Link>Tests-Online.vb</Link>
+    </Compile>
+    <Compile Include="..\TestProject\Tests-Transform.vb">
+      <Link>Tests-Transform.vb</Link>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -110,7 +124,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Tests.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -137,9 +150,6 @@
       <Project>{3622d159-0c66-4208-89fd-8dcd782b96f5}</Project>
       <Name>GeoJSON4EntityFramework5</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

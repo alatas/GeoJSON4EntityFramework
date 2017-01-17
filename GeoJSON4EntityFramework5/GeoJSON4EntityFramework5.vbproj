@@ -20,6 +20,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>GeoJSON4EntityFramework5.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineConstants>EF5</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>GeoJSON4EntityFramework5.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineConstants>EF5</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -75,8 +77,8 @@
     <Compile Include="..\GeoJSON4EntityFramework\Base\GeoJsonGeometry.vb">
       <Link>Base\GeoJsonGeometry.vb</Link>
     </Compile>
-    <Compile Include="..\GeoJSON4EntityFramework\Base\IGeometry.vb">
-      <Link>Base\IGeometry.vb</Link>
+    <Compile Include="..\GeoJSON4EntityFramework\Base\GeometryType.vb">
+      <Link>Base\GeometryType.vb</Link>
     </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\Elements\Coordinate.vb">
       <Link>Elements\Coordinate.vb</Link>
@@ -114,24 +116,18 @@
     <Compile Include="..\GeoJSON4EntityFramework\JsonNET\CoordinateConverter.vb">
       <Link>JsonNET\CoordinateConverter.vb</Link>
     </Compile>
-    <Compile Include="..\GeoJSON4EntityFramework\JsonNET\GenericListConverter.vb">
-      <Link>JsonNET\GenericListConverter.vb</Link>
-    </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\JsonNET\GeoJsonSerializer.vb">
       <Link>JsonNET\GeoJsonSerializer.vb</Link>
     </Compile>
     <Compile Include="..\GeoJSON4EntityFramework\JsonNET\OrderedContractResolver.vb">
       <Link>JsonNET\OrderedContractResolver.vb</Link>
     </Compile>
-    <Compile Include="Base\GeoJsonGeometryEF5.vb" />
-    <Compile Include="Elements\FeatureEF5.vb" />
-    <Compile Include="Elements\GeometryCollectionEF5.vb" />
-    <Compile Include="Elements\LineStringEF5.vb" />
-    <Compile Include="Elements\MultiLineStringEF5.vb" />
-    <Compile Include="Elements\MultiPointEF5.vb" />
-    <Compile Include="Elements\MultiPolygonEF5.vb" />
-    <Compile Include="Elements\PointEF5.vb" />
-    <Compile Include="Elements\PolygonEF5.vb" />
+    <Compile Include="..\GeoJSON4EntityFramework\Transform\Transform.vb">
+      <Link>Transform\Transform.vb</Link>
+    </Compile>
+    <Compile Include="..\GeoJSON4EntityFramework\Transform\TransformException.vb">
+      <Link>Transform\TransformException.vb</Link>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -157,6 +153,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="GeoJSON4EntityFramework5.nuspec" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>

@@ -1,31 +1,16 @@
 ﻿Public Class TestFeature
-    Sub New(_name As String, _geometry As String)
+    Sub New(_name As String, _geometry As String, _file As String)
         MyBase.New()
 
         Name = _name
         Geometry = _geometry
-
-        Dim ElementTypeName As String = Text.RegularExpressions.Regex.Match(Geometry, "^([A-Z]*)\s").Value
-        If Not ElementTypeName = "" Then
-            ElementType = [Enum].Parse(GetType(ElementTypeEnum), ElementTypeName)
-        Else
-            ElementType = ElementTypeEnum.UNKNOWN
-        End If
+        File = _file
+        ElementType = Text.RegularExpressions.Regex.Match(Geometry, "^([A-Z]*)\s").Value.Trim
     End Sub
 
     Property ID As String = Guid.NewGuid.ToString.ToLower
     Property Name As String
+    Property File As String
     Property Geometry As String
-    Property ElementType As ElementTypeEnum
-
-    Public Enum ElementTypeEnum
-        UNKNOWN
-        POINT
-        MULTIPOINT
-        LINESTRING
-        MULTILINESTRING
-        POLYGON
-        MULTIPOLYGON
-        GEOMETRYCOLLECTION
-    End Enum
+    Property ElementType As String
 End Class

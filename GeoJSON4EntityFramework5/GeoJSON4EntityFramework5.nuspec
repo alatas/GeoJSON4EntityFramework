@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>GeoJSON4EntityFramework5</id>
+    <version>2.2.0</version>
+    <title>GeoJSON for Entity Framework 5 Spatial Data and WKT</title>
+    <authors>Sukru Alatas</authors>
+    <owners>Sukru Alatas</owners>
+    <licenseUrl>https://raw.githubusercontent.com/alatas/GeoJSON4EntityFramework/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/alatas/GeoJSON4EntityFramework</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/alatas/GeoJSON4EntityFramework/master/geojson.png</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>
+      GeoJSON for EntityFramework is a .net library that allows you to create GeoJSON output from EntityFramework Spatial Data or WKT inputs. In other words, It serializes different type of geometry objects to GeoJSON. It's not limited to only EF entities but It can serialize WKT inputs as well.
+
+      Features:
+      - Supports Entity Framework v6 (System.Data.Entity.Spatial namespace) objects
+      - Supports Well-known Text inputs
+      - Supports DbGeometry (planar) and DbGeography (geodetic "round earth") objects
+      - Supports all types of features defined in geojson specs
+      - Supports boundingbox property defined in geojson specs
+      - Supports geometry transform
+    </description>
+    <summary>
+      GeoJSON for EntityFramework is a .net library that allows you to create GeoJSON output from EntityFramework Spatial Data or WKT inputs. In other words, It serializes different type of geometry objects to GeoJSON. It's not limited to only EF entities but It can serialize WKT inputs as well.
+    </summary>
+    <releaseNotes>
+      2.2.0
+      -added WKT support
+      -added geometry transform (thanks to @jumpinjackie)
+      -added quick start example projects to source
+      -reorganized whole code base and unit tests (this means lots of deletions)
+      -fixed some minor bugs
+    </releaseNotes>
+    <copyright>Copyright 2014 - 2017</copyright>
+    <language>en-US</language>
+    <tags>geojson entityframework ef spatial dbgeometry entity framework system.data.spatial wkt transform geometry</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="EntityFramework" version="[5.0.0, 6.0.0)" />
+        <dependency id="Newtonsoft.Json" version="6.0.0" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin\$configuration$\GeoJSON4EntityFramework5.dll" target="lib\net45\" />
+    <file src="bin\$configuration$\GeoJSON4EntityFramework5.pdb" target="lib\net45\" />
+  </files>
+</package>
