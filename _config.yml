@@ -2,7 +2,7 @@ title: GeoJSON4EntityFramework
 description: Create GeoJSON from Entity Framework Spatial Data
 google_analytics: 
 show_downloads: true
-theme: jekyll-theme-tactile
+theme: jekyll-theme-slate
 
 gems:
   - jekyll-mentions
