@@ -7,7 +7,7 @@
     <authors>Sukru Alatas</authors>
     <owners>Sukru Alatas</owners>
     <licenseUrl>https://raw.githubusercontent.com/alatas/GeoJSON4EntityFramework/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/alatas/GeoJSON4EntityFramework</projectUrl>
+    <projectUrl>https://alatas.github.io/GeoJSON4EntityFramework/</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/alatas/GeoJSON4EntityFramework/master/geojson.png</iconUrl>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
     <description>
@@ -28,7 +28,7 @@
       2.2.0
       -added WKT support
       -added geometry transform (thanks to @jumpinjackie)
-      -added quick start example projects to source
+      -added quick start and example projects
       -reorganized whole code base and unit tests (this means lots of deletions)
       -fixed some minor bugs
     </releaseNotes>
