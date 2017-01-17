@@ -14,8 +14,8 @@
       GeoJSON for EntityFramework is a .net library that allows you to create GeoJSON output from EntityFramework Spatial Data or WKT inputs. In other words, It serializes different type of geometry objects to GeoJSON. It's not limited to only EF entities but It can serialize WKT inputs as well.
 
       Features:
-      - Supports Entity Framework v6 (System.Data.Entity.Spatial namespace) objects
-      - Supports Well-known Text inputs
+      - Supports Entity Framework v5 (System.Data.Spatial namespace) objects
+      - Supports Well-known Text (WKT) inputs
       - Supports DbGeometry (planar) and DbGeography (geodetic "round earth") objects
       - Supports all types of features defined in geojson specs
       - Supports boundingbox property defined in geojson specs

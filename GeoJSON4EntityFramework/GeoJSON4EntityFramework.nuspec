@@ -15,7 +15,7 @@
 
       Features:
       - Supports Entity Framework v6 (System.Data.Entity.Spatial namespace) objects
-      - Supports Well-known Text inputs
+      - Supports Well-known Text (WKT) inputs
       - Supports DbGeometry (planar) and DbGeography (geodetic "round earth") objects
       - Supports all types of features defined in geojson specs
       - Supports boundingbox property defined in geojson specs
