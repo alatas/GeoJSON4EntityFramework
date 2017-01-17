@@ -30,9 +30,13 @@ _GeoJSON for EntityFramework_ is a .net library that allows you to create GeoJSO
 - [x] Supports geometry transform
 
 ___
+
 ### Quick Start
+
 #### EntityFramework Example
+
 **Visual Basic**
+
 ```vbnet
 Imports alatas.GeoJSON4EntityFramework
 
