@@ -29,26 +29,13 @@ _GeoJSON for EntityFramework_ is a .net library that allows you to create GeoJSO
 - [x] Supports boundingbox property defined in geojson specs ([RFC 7946](https://tools.ietf.org/html/rfc7946))
 - [x] Supports geometry transform
 
-___
-
 ### Quick Start
 
 #### EntityFramework Example
 
 **Visual Basic**
 
-```vbnet
-Imports alatas.GeoJSON4EntityFramework
 
-Function GetGeoJSONFromDB() As String
-    Using db As New SpatialExampleEntities
-        Dim data = From row In db.SampleTables Select row.SpatialData
-
-        Dim features as New FeatureCollection(data.ToArray)
-        Return features.Serialize(prettyPrint:=True)
-    End Using
-End Function
-```
 
 **C#**
 ```csharp
