@@ -1,5 +1,4 @@
-﻿Imports System.Runtime.Serialization
-''' <summary>
+﻿''' <summary>
 ''' Thrown when there is a failure in transforming a geometry instance
 ''' </summary>
 Public Class TransformException
@@ -10,7 +9,7 @@ Public Class TransformException
     End Sub
 
     Public Sub New(msg As String, x As Double, y As Double, tx As Double, ty As Double)
-        MyBase.New
+        MyBase.New(msg)
         ParamX = x
         ParamY = y
         ParamTX = tx

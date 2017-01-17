@@ -9,7 +9,7 @@ Imports System.Data.Entity.Spatial
 Public Class Polygon
     Inherits GeoJsonGeometry
 
-    <Newtonsoft.Json.JsonIgnore()>
+    <JsonIgnore()>
     Public Property Rings As New List(Of CoordinateList)
 
     Public Overrides ReadOnly Property Coordinates()

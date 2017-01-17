@@ -1,6 +1,6 @@
 ﻿Public Class GeoJsonSerializer
     Public Shared Function Serialize(inp As GeoJsonElement, Optional prettyPrint As Boolean = False) As String
-        Dim settings As New Newtonsoft.Json.JsonSerializerSettings
+        Dim settings As New JsonSerializerSettings
         settings.ContractResolver = New OrderedContractResolver
         settings.NullValueHandling = NullValueHandling.Ignore
         settings.FloatFormatHandling = FloatFormatHandling.DefaultValue
