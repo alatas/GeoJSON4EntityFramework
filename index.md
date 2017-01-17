@@ -29,15 +29,29 @@ _GeoJSON for EntityFramework_ is a .net library that allows you to create GeoJSO
 - [x] Supports boundingbox property defined in geojson specs ([RFC 7946](https://tools.ietf.org/html/rfc7946))
 - [x] Supports geometry transform
 
+---
+
 ### Quick Start
 
 #### EntityFramework Example
 
 **Visual Basic**
 
+```vbnet
+Imports alatas.GeoJSON4EntityFramework
 
+Function GetGeoJSONFromDB() As String
+    Using db As New SpatialExampleEntities
+        Dim data = From row In db.SampleTables Select row.SpatialData
+
+        Dim features as New FeatureCollection(data.ToArray)
+        Return features.Serialize(prettyPrint:=True)
+    End Using
+End Function
+```
 
 **C#**
+
 ```csharp
 using alatas.GeoJSON4EntityFramework;
 
@@ -55,7 +69,9 @@ public string GetGeoJSONFromDB()
 ```
 
 #### Well-Known Text (WKT) Example
+
 **Visual Basic**
+
 ```vbnet
 Imports alatas.GeoJSON4EntityFramework
 
@@ -70,6 +86,7 @@ End Function
 ```
 
 **C#**
+
 ```csharp
 using alatas.GeoJSON4EntityFramework;
 
@@ -85,22 +102,26 @@ public string GetGeoJSONFromWKT()
     return features.Serialize(prettyPrint: true);
 }
 ```
+
 ---
+
 ### Install
+
 #### Install with Package Manager Console - Nuget
+
 To install GeoJSON for Entity Framework, run the following command in the Package Manager Console
 
 **Entity Framework 6**
+
 ```powershell
 Install-Package GeoJSON4EntityFramework
 ```
 
 **Entity Framework 5**
+
 ```powershell
 Install-Package GeoJSON4EntityFramework5
 ```
-
-
 
 #### Manual Install
 Download the latest [release](https://github.com/alatas/GeoJSON4EntityFramework/releases) and add to your project references manually
