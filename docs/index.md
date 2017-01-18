@@ -1,5 +1,6 @@
 # GeoJSON4EntityFramework ![Logo](https://raw.githubusercontent.com/alatas/GeoJSON4EntityFramework/master/geojson.png)
 ![BuildStatus](https://sukru.visualstudio.com/_apis/public/build/definitions/ef35124c-d2ad-4375-9c78-8862c095207b/1/badge) 
+
 ___
 
 ### What is GeoJSON?
