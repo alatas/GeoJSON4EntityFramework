@@ -22,12 +22,12 @@ EntityFramework (EF) is an open source object-relational mapping [(ORM)](https:/
 _GeoJSON for EntityFramework_ is a .net library that allows you to create GeoJSON output from EntityFramework Spatial Data or WKT inputs. In other words, It serializes different type of geometry objects to GeoJSON. It's not limited to only EF entities but It can serialize WKT inputs as well.
 
 ### Features
-- [x] Supports Entity Framework v6 (System.Data.Entity.Spatial namespace) and Entity Framework v5 (System.Data.Spatial namespace) objects
-- [x] Supports Well-known Text inputs
-- [x] Supports DbGeometry (*planar*) and DbGeography (*geodetic "round earth"*) objects
-- [x] Supports all types of features defined in geojson specs ([RFC 7946](https://tools.ietf.org/html/rfc7946))
-- [x] Supports boundingbox property defined in geojson specs ([RFC 7946](https://tools.ietf.org/html/rfc7946))
-- [x] Supports geometry transform
+- Supports Entity Framework v6 (System.Data.Entity.Spatial namespace) and Entity Framework v5 (System.Data.Spatial namespace) objects
+- Supports Well-known Text inputs
+- Supports DbGeometry (*planar*) and DbGeography (*geodetic "round earth"*) objects
+- Supports all types of features defined in geojson specs ([RFC 7946](https://tools.ietf.org/html/rfc7946))
+- Supports boundingbox property defined in geojson specs ([RFC 7946](https://tools.ietf.org/html/rfc7946))
+- Supports geometry transform
 
 ---
 
@@ -37,7 +37,7 @@ _GeoJSON for EntityFramework_ is a .net library that allows you to create GeoJSO
 
 **Visual Basic**
 
-```vbnet
+```visualbasic
 Imports alatas.GeoJSON4EntityFramework
 
 Function GetGeoJSONFromDB() As String
