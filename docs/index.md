@@ -134,4 +134,4 @@ Download the latest [release](https://github.com/alatas/GeoJSON4EntityFramework/
 ### Tests and Validation
 You may validate outputs with http://geojson.io and http://geojsonlint.com
 ___
-Test data extracted from OpenStreetMap®. OpenStreetMap® is open data, licensed under the [Open Data Commons Open Database License](http://opendatacommons.org/licenses/odbl/) (ODbL) by the OpenStreetMap Foundation (OSMF)
+Test data extracted from OpenStreetMap®. OpenStreetMap® is open data, licensed under the [Open Data Commons Open Database License](http://opendatacommons.org/licenses/odbl/) (ODbL) by the OpenStreetMap Foundation (OSMF).
