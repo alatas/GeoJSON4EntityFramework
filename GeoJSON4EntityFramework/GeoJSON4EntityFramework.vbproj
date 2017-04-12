@@ -82,7 +82,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\GeometryType.vb" />
+    <Compile Include="Base\IGeoJsonGeometry.vb" />
     <Compile Include="Elements\Polygon.vb" />
+    <Compile Include="JsonNET\GeoJsonGeometryConverter.vb" />
     <Compile Include="Transform\TransformException.vb" />
     <Compile Include="Elements\LineString.vb" />
     <Compile Include="Elements\GeometryCollection.vb" />

@@ -14,6 +14,7 @@ Public Class Feature
     <JsonProperty(PropertyName:="properties", Order:=3)>
     Public Property Properties As New Dictionary(Of String, Object)
 
+    <JsonConverter(GetType(GeoJsonGeometryConverter))>
     <JsonProperty(PropertyName:="geometry", Order:=4)>
     Public Property Geometry As GeoJsonGeometry
 
