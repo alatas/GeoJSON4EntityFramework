@@ -151,6 +151,11 @@
       <Name>GeoJSON4EntityFramework5</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="SqlServerSpatial110.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

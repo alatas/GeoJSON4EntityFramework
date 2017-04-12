@@ -9,7 +9,6 @@ Imports System.Data.Entity.Spatial
 Public Class FeatureCollection
     Inherits GeoJsonElement
 
-
     <JsonProperty(PropertyName:="features")>
     Public Property Features As New List(Of Feature)
 
