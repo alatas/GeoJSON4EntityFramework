@@ -8,11 +8,19 @@ Imports System.Data.Entity.Spatial
 
 Imports System.Reflection
 
-Public MustInherit Class GeoJsonGeometry
+Public Class GeoJsonGeometry
     Inherits GeoJsonElement
 
     <JsonProperty(PropertyName:="coordinates")>
-    Public MustOverride ReadOnly Property Coordinates() As Object
+    Public Overridable ReadOnly Property Coordinates() As Object
+
+    Public Overridable Sub CreateFromDbGeometry(inp As DbGeometry)
+        Throw New NotImplementedException()
+    End Sub
+
+    Public Overridable Function Transform(xform As CoordinateTransform) As GeoJsonGeometry
+        Throw New NotImplementedException()
+    End Function
 
     <JsonProperty(PropertyName:="bbox", Order:=5, NullValueHandling:=NullValueHandling.Ignore)>
     Public Property BoundingBox As Double()
@@ -20,12 +28,7 @@ Public MustInherit Class GeoJsonGeometry
     <JsonIgnore>
     Public Property WithBoundingBox As Boolean = False
 
-    Public MustOverride Function Transform(xform As CoordinateTransform) As GeoJsonGeometry
-
-    Public MustOverride Sub CreateFromDbGeometry(inp As DbGeometry)
-
     Public Shared Function FromDbGeometry(inp As DbGeometry, Optional withBoundingBox As Boolean = True) As GeoJsonGeometry
-
         Dim baseType As Type = GetType(GeoJsonGeometry)
         Dim geomType = (From t In Assembly.GetAssembly(baseType).GetTypes()
                         Where t.IsSubclassOf(baseType) And t.Name = inp.SpatialTypeName Select t).FirstOrDefault
@@ -53,18 +56,15 @@ Public MustInherit Class GeoJsonGeometry
     End Function
 
     Public Shared Function FromDbGeography(inp As DbGeography, Optional withBoundingBox As Boolean = True) As GeoJsonGeometry
-
         Return FromDbGeometry(DbSpatialServices.Default.GeometryFromBinary(inp.AsBinary, inp.CoordinateSystemId), withBoundingBox)
     End Function
 
     Public Shared Function FromWKTGeometry(WKT As String, Optional withBoundingBox As Boolean = True) As GeoJsonGeometry
-
         Return FromDbGeometry(DbGeometry.FromText(WKT), withBoundingBox)
     End Function
 
     Public Shared Function FromWKTGeography(WKT As String, Optional withBoundingBox As Boolean = True) As GeoJsonGeometry
-        Dim inp = DbGeography.FromText(WKT)
-
-        Return FromDbGeometry(DbSpatialServices.Default.GeometryFromBinary(inp.AsBinary, inp.CoordinateSystemId), withBoundingBox)
+        Dim instance = DbGeography.FromText(WKT)
+        Return FromDbGeometry(DbSpatialServices.Default.GeometryFromBinary(instance.AsBinary, instance.CoordinateSystemId), withBoundingBox)
     End Function
 End Class
